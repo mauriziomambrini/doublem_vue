@@ -1,0 +1,15 @@
+query ExperiencePage($locale: SiteLocale!) {
+    experience {
+        text(locale: $locale)
+        title(locale: $locale)
+        timeline(locale: $locale) {
+            title
+            startDate
+            fullDescription
+            shortDescription
+            endDate
+            tags
+            subtitle
+        }
+    }
+}

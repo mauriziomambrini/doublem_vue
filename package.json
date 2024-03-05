@@ -1,0 +1,32 @@
+{
+  "name": "doublem_vue",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.3.11"
+  },
+  "devDependencies": {
+    "@intlify/unplugin-vue-i18n": "^2.0.0",
+    "@vitejs/plugin-vue": "^4.5.2",
+    "date-fns": "^3.3.1",
+    "graphql": "^16.8.1",
+    "graphql-request": "^6.1.0",
+    "html2pdf.js": "^0.10.1",
+    "markdown-it": "^14.0.0",
+    "markdown-it-attrs": "^4.1.6",
+    "prettier": "^3.1.1",
+    "sass": "^1.69.5",
+    "vite": "^5.0.8",
+    "vite-raw-plugin": "^1.0.2",
+    "vue-i18n": "^9.8.0",
+    "vue-inline-svg": "next",
+    "vue-router": "4",
+    "vue-wrap-balancer": "^1.1.3"
+  }
+}

@@ -1,0 +1,41 @@
+:root {
+  // Colors
+  --c-black: #000000;
+  --c-white: #FFFFFF;
+  --c-bg: #FAFAFA;
+  --c-bg-d: #F5F5F5;
+  --c-bg-d2: #EEEEEE;
+  --c-bg-d3: #E0E0E0;
+  --c-bg-d4: #BDBDBD;
+  --c-body: var(--c-white);
+  --c-primary: #00D563;
+  --c-primary-l: #00D56316;
+  --c-secondary: #222222;
+  --c-secondary-l: #717171;
+  --c-error: #F44336;
+  --c-info: #0065FF;
+  --c-ok: #4CAF50;
+  --c-warning: #FFB300;
+  
+  --c-text: var(--c-secondary);
+  --c-text-l: var(--c-secondary-l);
+  --c-text-primary: var(--c-primary);
+  
+  --c-icon:var(--c-secondary);
+  --c-icon-l: var(--c-secondary-l);
+  
+  --c-btn-primary: var(--c-primary);
+  --c-btn-secondaru: var(--c-secondary);
+  --c-btn-hover: var(--c-black);
+  
+  // Shadows
+  --sw-dp4: 0 1px 3px 0 rgb(0 0 0 / 13%), 0 0 0 0 rgb(0 0 0 / 11%);
+  --sw-dp8: 0 3px 7px 0 rgb(0 0 0 / 13%), 0 0 1px 0 rgb(0 0 0 / 11%);
+  --sw-dp16: 0 6px 14px 0 rgb(0 0 0 / 13%), 0 1px 3px 0 rgb(0 0 0 / 11%);
+  --sw-dp64: 0 25px 57px 0 rgb(0 0 0 / 22%), 0 4px 14px 0 rgb(0 0 0 / 18%);
+  
+  --sw-inset-top: inset 0 1px 0 0 var(--c-bg-d2);
+  --sw-inset-right: inset -1px 0 0 0 var(--c-bg-d2);
+  --sw-inset-bottom: inset 0 -1px 0 0 var(--c-bg-d2);
+  --sw-inset-left: inset 1px 0 0 0 var(--c-bg-d2);
+}

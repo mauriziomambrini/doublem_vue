@@ -1,0 +1,121 @@
+<script setup>
+import { useI18n } from 'vue-i18n';
+import useGQL from '@composable/useGQL.js';
+import { unicode } from '../constants.js';
+import Home from '@gql/home.gql';
+import Typo from '@components/typography/Typo.vue';
+
+const { data } = useGQL(Home);
+const { t } = useI18n();
+</script>
+
+<template>
+  <div :class="s.wrapper">
+    <div :class="s.pretitle">
+      <span>{{ t('page.home.title') }}</span>
+      <span>{{ unicode.BULLET }}</span>
+    </div>
+    <div v-if="data && data.homePage" :class="s.wrapTitle">
+      <Typo
+        :class="s.title"
+        :text="data?.homePage.title"
+        tag="h1"
+        size="db"
+        weight="regular"
+        :balancer="true"
+      />
+    </div>
+  </div>
+</template>
+
+<style module="s" lang="scss">
+@import '@styles/mixins';
+
+.wrapper {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow: hidden;
+
+  @include media(sm) {
+    align-items: center;
+  }
+}
+
+.pretitle {
+  width: 100%;
+  position: relative;
+  z-index: var(--z-index-top);
+  font-weight: var(--fw-bold);
+  font-size: clamp(var(--fs-db), 25cqw, 50cqw);
+  transform: translateX(-31%);
+  animation: pretitle-slide-in 0.5s ease-in 1.125s forwards;
+
+  @include media(sm) {
+    line-height: 0.5;
+    text-align: center;
+  }
+
+  * {
+    display: inline-block;
+  }
+
+  *:nth-child(1) {
+    animation: pretitle-fade-in 0.25s ease-in 1.5s forwards;
+    opacity: 0;
+  }
+
+  *:nth-child(2) {
+    vertical-align: sub;
+    color: var(--c-primary);
+    transform: scale(100);
+    animation: pretitle-scale 1s ease-out forwards;
+  }
+}
+
+@keyframes pretitle-scale {
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes pretitle-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pretitle-slide-in {
+  to {
+    transform: translateX(0%);
+  }
+}
+.wrapTitle {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  animation: title-fade-in 0.25s ease-in 1.825s forwards;
+  opacity: 0;
+
+  @include media(sm) {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@keyframes title-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+.title {
+  font-size: clamp(var(--fs-xxl), 5cqw, 2.5cqw);
+
+  @include media(xl) {
+    max-width: 75%;
+  }
+}
+</style>

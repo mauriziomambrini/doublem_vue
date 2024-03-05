@@ -1,0 +1,20 @@
+query SkillsPage($locale: SiteLocale!) {
+    skill {
+        text(locale: $locale)
+        title(locale: $locale)
+        designSkills {
+            level
+            title
+            icon {
+                url
+            }
+        }
+        developSkills {
+            level
+            title
+            icon {
+                url
+            }
+        }
+    }
+}

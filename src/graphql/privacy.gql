@@ -1,0 +1,6 @@
+query PrivacyPage($locale: SiteLocale!) {
+    privacy {
+        text(locale: $locale)
+        title(locale: $locale)
+    }
+}

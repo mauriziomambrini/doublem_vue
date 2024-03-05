@@ -1,0 +1,9 @@
+**/*.d.ts
+build/
+node_modules/
+public/
+**/*.min*
+package.json
+tsconfig.json
+typed.ts
+# *.json

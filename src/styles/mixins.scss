@@ -1,0 +1,59 @@
+@use 'sass:math';
+
+// Mobile first media query
+$breakpoints: (
+  sm: 768px,
+  md: 1024px,
+  lg: 1280px,
+  xl: 1440px,
+  xxl: 1920px,
+);
+
+@mixin media($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == touch {
+    @media (hover: none) and (pointer: coarse) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == noTouch {
+    @media (hover: hover) and (pointer: fine) {
+      @content;
+    }
+  }
+}
+
+// Overflow X
+@mixin overflow-x {
+  overflow-x: auto;
+  overflow-x: overlay;
+  -webkit-overflow-scrolling: touch;
+}
+
+// Overflow Y
+@mixin overflow-y {
+  overflow-y: auto;
+  overflow-y: overlay;
+  -webkit-overflow-scrolling: touch;
+}
+
+// Text overflow
+@mixin overflow-text {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+// Prevent text selection
+@mixin prevent-text-selection {
+  -webkit-touch-callout: none;
+  user-select: none;
+}

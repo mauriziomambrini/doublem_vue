@@ -1,0 +1,6 @@
+query WhatPage($locale: SiteLocale!) {
+    what {
+        text(locale: $locale)
+        title(locale: $locale)
+    }
+}
