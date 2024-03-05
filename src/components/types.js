@@ -29,6 +29,15 @@ export const TypoWeight = (value) =>
 export const TypoLineHeight = (value) =>
   ['default', 'paragraph'].includes(value);
 
+// Button
+export const ButtonClasses = (value) =>
+  ['wrapper', 'icon', 'content', 'label'].includes(value);
+export const ButtonTheme = (value) =>
+  ['fill', 'outline', 'text'].includes(value);
+export const ButtonSize = (value) => ['sm', 'df', 'lg'].includes(value);
+export const ButtonIconPosition = (value) =>
+  ['before', 'after'].includes(value);
+
 // Divider
 export const DividerTheme = (value) =>
   ['lineH', 'lineV', 'spaceH', 'spaceV'].includes(value);

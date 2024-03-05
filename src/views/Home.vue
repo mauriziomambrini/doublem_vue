@@ -1,12 +1,20 @@
 <script setup>
 import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
 import useGQL from '@composable/useGQL.js';
 import { unicode } from '../constants.js';
 import Home from '@gql/home.gql';
 import Typo from '@components/typography/Typo.vue';
+import Button from '@components/buttons/Button.vue';
+import * as ICONS from '@icons';
 
 const { data } = useGQL(Home);
-const { t } = useI18n();
+const { t, locale } = useI18n();
+const router = useRouter();
+
+const handleClick = () => {
+  router.push(`/${locale.value}/what`);
+};
 </script>
 
 <template>
@@ -23,6 +31,15 @@ const { t } = useI18n();
         size="db"
         weight="regular"
         :balancer="true"
+      />
+      <Button
+        :label="t('action.discover_more')"
+        :icon="ICONS.arrowAngleRight"
+        icon-position="after"
+        theme="outline"
+        size="lg"
+        color="var(--c-primary)"
+        @click="handleClick"
       />
     </div>
   </div>
@@ -96,6 +113,7 @@ const { t } = useI18n();
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 3em;
   animation: title-fade-in 0.25s ease-in 1.825s forwards;
   opacity: 0;
 
@@ -116,6 +134,26 @@ const { t } = useI18n();
 
   @include media(xl) {
     max-width: 75%;
+  }
+}
+
+.cta {
+  --lw-icon: clamp(var(--fs-df), 3.5vw, 1.5vw);
+  --lfs-label: clamp(var(--fs-df), 3.5vw, 1.5vw);
+  --lp-content: 0.5em;
+  //--lp: 2.5em;
+
+  min-width: 100%;
+  height: auto;
+  //padding-block: 1em;
+  //border-radius: 0.5em;
+
+  @include media(sm) {
+    min-width: fit-content;
+  }
+
+  @include media(xl) {
+    //padding-block: 1.5em;
   }
 }
 </style>

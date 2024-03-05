@@ -6,7 +6,7 @@ const props = defineProps({
   size: { type: Array, default: [4] },
   color: { type: String, default: 'var(--c-icon)' },
   click: Function,
-  class: String,
+  class: { type: [String, Array] },
 });
 
 const width = props.size[0] + 'rem';
