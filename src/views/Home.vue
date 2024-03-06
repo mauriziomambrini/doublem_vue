@@ -33,11 +33,12 @@ const handleClick = () => {
         :balancer="true"
       />
       <Button
+        :classes="{ wrapper: s.cta }"
         :label="t('action.discover_more')"
         :icon="ICONS.arrowAngleRight"
         icon-position="after"
-        theme="outline"
-        size="lg"
+        theme="fill"
+        size="df"
         color="var(--c-primary)"
         @click="handleClick"
       />
@@ -138,22 +139,12 @@ const handleClick = () => {
 }
 
 .cta {
-  --lw-icon: clamp(var(--fs-df), 3.5vw, 1.5vw);
   --lfs-label: clamp(var(--fs-df), 3.5vw, 1.5vw);
-  --lp-content: 0.5em;
-  //--lp: 2.5em;
 
   min-width: 100%;
-  height: auto;
-  //padding-block: 1em;
-  //border-radius: 0.5em;
 
   @include media(sm) {
     min-width: fit-content;
-  }
-
-  @include media(xl) {
-    //padding-block: 1.5em;
   }
 }
 </style>

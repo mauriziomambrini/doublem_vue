@@ -62,12 +62,10 @@ const style = computed(() => ({
 //Not use directly variables that come from props to enabled override
 .wrapper {
   --lc-bg: var(--color);
-  --lc-label: var(--label);
-  --lw-icon: 1rem;
+  --lc-label: var(--color-label);
+  --lw-icon: 1em;
   --lfs-label: var(--fs-df);
-  --lp-content: 0.5rem;
-  --lp-inline: 1rem;
-  --lp-block: 1em;
+  --lp-content: 0.5em;
 
   display: flex;
   justify-content: center;
@@ -118,11 +116,25 @@ const style = computed(() => ({
   flex-direction: row-reverse;
 }
 
+// If size 'df'
+.df {
+  --lp-block: 0.75em;
+  --lp-inline: 1em;
+}
+
+// If size 'lg'
+.lg {
+  --lfs-label: var(--fs-lg);
+  --lp-block: 1.25em;
+  --lp-inline: 1.5em;
+}
+
 // If theme 'fill'
 .fill {
   padding-block: var(--lp-block);
   padding-inline: var(--lp-inline);
   background-color: var(--lc-bg);
+  border-radius: 0.375em;
 }
 
 // If theme 'outline'
@@ -132,27 +144,14 @@ const style = computed(() => ({
   padding-block: var(--lp-block);
   padding-inline: var(--lp-inline);
   border: 1px solid var(--lc-bg);
+  border-radius: 0.375em;
 }
 
 // If theme 'text'
 .text {
   --lc-label: var(--lc-bg);
-}
-
-// If size 'df'
-.df {
-  height: 3rem;
-  border-radius: var(--s-us);
-}
-
-// If size 'lg'
-.lg {
-  --lw-icon: 1.125rem;
-  --lfs-label: var(--fs-lg);
-  --lp: 1.5rem;
-
-  height: 4rem;
-  border-radius: var(--s-us);
+  --lp-inline: 0;
+  --lp-block: 0;
 }
 
 // If hover
