@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n';
 const { locale } = useI18n();
 import Icon from '@components/utils/Icon.vue';
 import Typo from '@components/typography/Typo.vue';
-import { ItemNavTheme } from '@components/types.js';
+import { ItemNavClasses, ItemNavTheme } from '@components/types.js';
 
 const props = defineProps({
   theme: { type: String, default: 'desktop', validator: ItemNavTheme },
@@ -12,17 +12,22 @@ const props = defineProps({
   target: { type: String },
   icon: String,
   label: String,
+  classes: { type: Object, default: () => ({}), validator: ItemNavClasses },
 });
 </script>
 
 <template>
   <RouterLink
     :to="`/${locale + props.to}`"
-    :class="[s.wrapper, { [s[theme]]: true }]"
+    :class="[props.classes.wrapper, s.wrapper, { [s[theme]]: true }]"
     :target="props.target"
   >
-    <Icon v-if="icon" :class="s.icon" :src="props.icon" />
-    <Typo v-if="label" :class="s.label" :text="props.label" />
+    <Icon v-if="icon" :class="[props.classes.icon, s.icon]" :src="props.icon" />
+    <Typo
+      v-if="label"
+      :class="[props.classes.label, s.label]"
+      :text="props.label"
+    />
   </RouterLink>
 </template>
 
@@ -62,6 +67,12 @@ const props = defineProps({
   justify-content: center;
   align-items: center;
   gap: var(--s-us);
+}
+
+// Mobile theme
+.mobile {
+  width: 100%;
+  height: 100%;
 }
 
 // Desktop theme

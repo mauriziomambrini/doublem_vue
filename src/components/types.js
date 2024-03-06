@@ -5,6 +5,8 @@ export const HeroTheme = (value) => ['default', 'simple'].includes(value);
 // Nav
 export const ItemNavTheme = (value) =>
   ['mobile', 'desktop', 'page'].includes(value);
+export const ItemNavClasses = (value) =>
+  ['wrapper', 'icon', 'label'].includes(value);
 
 // Typography
 export const TypoFamily = (value) => ['sans', 'mono'].includes(value);
