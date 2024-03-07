@@ -52,5 +52,8 @@ export const TabsTheme = (value) => ['switch'].includes(value);
 export const SkillClasses = (value) =>
   ['wrapper', 'icon', 'label'].includes(value);
 
+// Label badge
+export const LabelBadgeTheme = (value) => ['default', 'tag'].includes(value);
+
 // Date badge
 export const DateBadgeTheme = (value) => ['month', 'year'].includes(value);

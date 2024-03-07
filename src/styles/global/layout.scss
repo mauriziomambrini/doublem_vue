@@ -1,3 +1,5 @@
+@import '@styles/mixins';
+
 :root {
   // Layout
   --w-max-df: 70rem;
@@ -6,7 +8,8 @@
   --w-max-xxs: 35rem;
 
   // Size
-  --s-xbig: 3rem; // 48px
+  --s-qr: 4rem; // x
+  --s-tr: 3rem; // 48px
   --s-big: 2.5rem; // 40px
   --s-db: 2rem; // 32px
   --s-xxl: 1.5rem; // 24px

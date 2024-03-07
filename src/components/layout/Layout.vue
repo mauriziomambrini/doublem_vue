@@ -37,8 +37,6 @@ div#app {
 .pageContent {
   width: 100%;
   max-width: var(--w-max-xs);
-  display: flex;
-  flex-direction: column;
   margin: 0 auto;
   padding-inline: var(--s-inset);
 
@@ -53,12 +51,18 @@ div#app {
 </style>
 
 <style module="s" lang="scss">
+@import '@styles/mixins';
 .main {
   display: flex;
   flex: 1;
   flex-direction: column;
+  row-gap: var(--s-db);
   position: relative;
   padding-bottom: clamp(6.5rem, 20vh, 20vh);
+
+  @include media(sm) {
+    row-gap: var(--s-tr);
+  }
 }
 
 // If is home page

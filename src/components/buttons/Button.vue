@@ -1,5 +1,5 @@
 <script setup>
-import { computed, defineProps } from 'vue';
+import { defineProps } from 'vue';
 import Typo from '@components/typography/Typo.vue';
 import Icon from '@components/utils/Icon.vue';
 import {
@@ -25,11 +25,6 @@ const props = defineProps({
   disabled: { type: Boolean },
   classes: { type: Object, default: () => ({}), validator: ButtonClasses },
 });
-
-const style = computed(() => ({
-  '--color': props.color,
-  '--color-label': props.labelColor,
-}));
 </script>
 
 <template>
@@ -44,7 +39,6 @@ const style = computed(() => ({
         [s.disabled]: props.disabled,
       },
     ]"
-    :style="style"
     @click="props.click"
   >
     <Icon
@@ -59,10 +53,9 @@ const style = computed(() => ({
 </template>
 
 <style module="s" lang="scss">
-//Not use directly variables that come from props to enabled override
 .wrapper {
-  --lc-bg: var(--color);
-  --lc-label: var(--color-label);
+  --lc-bg: v-bind('props.color');
+  --lc-label: v-bind('props.labelColor');
   --lw-icon: 1em;
   --lfs-label: var(--fs-df);
   --lp-content: 0.5em;

@@ -38,7 +38,7 @@ const handleClick = () => {
         :icon="ICONS.arrowAngleRight"
         icon-position="after"
         theme="fill"
-        size="df"
+        size="lg"
         color="var(--c-primary)"
         @click="handleClick"
       />

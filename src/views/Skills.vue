@@ -6,8 +6,10 @@ import Skills from '@gql/skills.gql';
 import Markdown from '@components/typography/Markdown.vue';
 import Hero from '@components/layout/Hero.vue';
 import Tabs from '@components/utils/Tabs.vue';
-import Typo from '@components/typography/Typo.vue';
+
 import SkillItem from '@components/items/SkillItem.vue';
+import Divider from '@components/utils/Divider.vue';
+import LabelBadge from '@components/badges/LabelBadge.vue';
 const { t, locale } = useI18n();
 const { data } = useGQL(Skills);
 const tabs = ['all', 'development', 'design'];
@@ -69,31 +71,62 @@ watch(locale, updateTabsData);
     :text="data?.skill.text"
   />
 
-  <div v-if="data && data.skill" class="pageContent">
+  <div v-if="data && data.skill" :class="['pageContent', s.wrapper]">
     <Tabs :tabs="tabsData" direction="row" />
-    <div v-for="(skills, level) in groupedSkills" :key="level">
-      <Typo :text="t(`label.level_${level}`)" weight="bold" />
-      <div :class="s.group">
+    <section
+      v-for="(skills, level) in groupedSkills"
+      :class="s.section"
+      :key="level"
+    >
+      <header :class="s.headerSection">
+        <Divider />
+        <LabelBadge :label="t(`label.level_${level}`)" />
+        <Divider />
+      </header>
+      <article :class="s.group">
         <SkillItem
           v-for="skill in skills"
           :key="skill.title"
           :label="skill.title"
           :icon="skill.icon.url"
         />
-      </div>
-    </div>
+      </article>
+    </section>
   </div>
 </template>
 
 <style module="s" lang="scss">
 @import '@styles/mixins';
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: var(--s-db);
+
+  @include media(sm) {
+    row-gap: var(--s-tr);
+  }
+}
+
+.section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-db);
+}
+
+.headerSection {
+  display: flex;
+  align-items: center;
+  gap: var(--s-df);
+}
+
 .group {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
   row-gap: 2rem;
   column-gap: 1rem;
-  padding: 0 1.5rem;
 
   @include media(sm) {
     grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
