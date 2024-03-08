@@ -1,3 +1,4 @@
+import { computed } from 'vue';
 import * as ICONS from '@icons';
 import { useI18n } from 'vue-i18n';
 
@@ -13,7 +14,7 @@ const MenuContext = {
 const useMenu = (context) => {
   const { t } = useI18n();
 
-  const entries = {
+  const entries = computed(() => ({
     home: {
       key: 'home',
       icon: ICONS.home,
@@ -101,54 +102,69 @@ const useMenu = (context) => {
       label: t('label.telegram'),
       href: 'https://t.me/mauriziomambrini',
     },
-  };
+  }));
 
-  const mobile = [
-    entries.home,
-    entries.what,
-    entries.skills,
-    entries.experience,
-    entries.menu,
-  ];
+  const mobile = computed(() => [
+    entries.value.home,
+    entries.value.what,
+    entries.value.skills,
+    entries.value.experience,
+    entries.value.menu,
+  ]);
 
-  const desktop = [
-    entries.home,
-    entries.what,
-    entries.about,
-    entries.skills,
-    entries.experience,
-    entries.education,
-  ];
+  const desktop = computed(() => [
+    entries.value.home,
+    entries.value.what,
+    entries.value.about,
+    entries.value.skills,
+    entries.value.experience,
+    entries.value.education,
+  ]);
 
-  const page = [
-    entries.home,
-    entries.what,
-    entries.about,
-    entries.skills,
-    entries.experience,
-    entries.education,
-  ];
+  const page = computed(() => [
+    entries.value.home,
+    entries.value.what,
+    entries.value.about,
+    entries.value.skills,
+    entries.value.experience,
+    entries.value.education,
+  ]);
 
-  const utilsDesktop = [entries.contacts, entries.menu];
+  const utilsDesktop = computed(() => [
+    entries.value.contacts,
+    entries.value.menu,
+  ]);
 
-  const utilsPage = [entries.contacts, entries.privacy, entries.cv];
+  const utilsPage = computed(() => [
+    entries.value.contacts,
+    entries.value.privacy,
+    entries.value.cv,
+  ]);
 
-  const social = [entries.linkedin, entries.github, entries.telegram];
+  const social = computed(() => [
+    entries.value.linkedin,
+    entries.value.github,
+    entries.value.telegram,
+  ]);
 
-  switch (context) {
-    case MenuContext.MOBILE:
-      return mobile;
-    case MenuContext.PAGE:
-      return page;
-    case MenuContext.UTILS_DESKTOP:
-      return utilsDesktop;
-    case MenuContext.UTILS_PAGE:
-      return utilsPage;
-    case MenuContext.SOCIAL:
-      return social;
-    default:
-      return desktop;
-  }
+  const menu = computed(() => {
+    switch (context) {
+      case MenuContext.MOBILE:
+        return mobile.value;
+      case MenuContext.PAGE:
+        return page.value;
+      case MenuContext.UTILS_DESKTOP:
+        return utilsDesktop.value;
+      case MenuContext.UTILS_PAGE:
+        return utilsPage.value;
+      case MenuContext.SOCIAL:
+        return social.value;
+      default:
+        return desktop.value;
+    }
+  });
+
+  return menu;
 };
 
 export { MenuContext, useMenu };
