@@ -58,8 +58,6 @@ const endDate = computed(() =>
 
 <style module="s" lang="scss">
 .wrapper {
-  --lw-icon: var(--s-df);
-
   max-width: fit-content;
   display: flex;
   gap: 0.25rem;
@@ -69,15 +67,17 @@ const endDate = computed(() =>
   border-radius: 0.25em;
   background-color: var(--c-bg-d2);
   cursor: inherit;
+  font-size: var(--lfs);
 }
 
 .label {
-  font-size: clamp(var(--fs-md), 4.5vw, var(--fs-xl));
+  font-size: clamp(var(--fs-md), 1.5vw, var(--fs-xl));
   line-height: 1.5;
   text-transform: uppercase;
 }
 
 .arrow {
+  --lw-icon: clamp(var(--fs-md), 1.5vw, var(--fs-xl));
   width: var(--lw-icon);
   min-width: var(--lw-icon);
   height: var(--lw-icon);

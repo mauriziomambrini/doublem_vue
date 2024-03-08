@@ -2,5 +2,9 @@ query EducationPage($locale: SiteLocale!) {
     education {
         text(locale: $locale)
         title(locale: $locale)
+        seo(locale: $locale) {
+            title
+            description
+        }
     }
 }

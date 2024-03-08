@@ -2,5 +2,9 @@ query WhatPage($locale: SiteLocale!) {
     what {
         text(locale: $locale)
         title(locale: $locale)
+        seo(locale: $locale) {
+            title
+            description
+        }
     }
 }

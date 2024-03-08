@@ -4,10 +4,15 @@ import Experience from '@gql/experience.gql';
 import Markdown from '@components/typography/Markdown.vue';
 import Hero from '@components/layout/Hero.vue';
 import TimelineItem from '@components/items/TimelineItem.vue';
+import MetaTags from '@components/utils/MetaTags.vue';
 const { data } = useGQL(Experience);
 </script>
 
 <template>
+  <MetaTags
+    :title="data?.experience?.seo?.title"
+    :description="data?.experience?.seo?.description"
+  />
   <Hero
     v-if="data && data.experience && data.experience.text"
     :title="data?.experience.title"
@@ -17,7 +22,7 @@ const { data } = useGQL(Experience);
     class="pageContent"
     :text="data?.experience.text"
   />
-  <template v-if="data && data.experience">
+  <div v-if="data && data.experience" class="pageContent">
     <TimelineItem
       v-for="item in data.experience.timeline"
       :key="item.title"
@@ -27,7 +32,7 @@ const { data } = useGQL(Experience);
       :subtitle="item.subtitle"
       :text="item.fullDescription"
     />
-  </template>
+  </div>
 </template>
 
 <style scoped lang="scss"></style>

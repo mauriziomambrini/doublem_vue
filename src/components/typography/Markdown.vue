@@ -118,10 +118,11 @@ watch(
 // Inline tags
 .text a {
   text-decoration: underline;
-  color: var(--c-tx-primary);
+  color: var(--c-text-primary);
+  transition: var(--transition-025);
 
   &:hover {
-    color: var(--c-tx-d);
+    color: var(--c-black);
   }
 }
 

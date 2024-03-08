@@ -7,6 +7,7 @@ import Home from '@gql/home.gql';
 import Typo from '@components/typography/Typo.vue';
 import Button from '@components/buttons/Button.vue';
 import * as ICONS from '@icons';
+import MetaTags from '@components/utils/MetaTags.vue';
 
 const { data } = useGQL(Home);
 const { t, locale } = useI18n();
@@ -18,6 +19,10 @@ const handleClick = () => {
 </script>
 
 <template>
+  <MetaTags
+    :title="data?.homePage?.seo?.title"
+    :description="data?.homePage?.seo?.description"
+  />
   <div :class="s.wrapper">
     <div :class="s.pretitle">
       <span>{{ t('page.home.title') }}</span>

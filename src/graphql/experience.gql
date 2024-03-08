@@ -11,5 +11,9 @@ query ExperiencePage($locale: SiteLocale!) {
             tags
             subtitle
         }
+        seo(locale: $locale) {
+            title
+            description
+        }
     }
 }

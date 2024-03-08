@@ -18,7 +18,7 @@ const props = defineProps({
       :alt="props.label"
     />
     <Typo
-      :class="[s.label, props.classes.label]"
+      :class="[props.classes.label, s.label]"
       :text="props.label"
       tag="h2"
       size="md"

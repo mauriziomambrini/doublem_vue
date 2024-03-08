@@ -16,5 +16,9 @@ query SkillsPage($locale: SiteLocale!) {
                 url
             }
         }
+        seo(locale: $locale) {
+            title
+            description
+        }
     }
 }

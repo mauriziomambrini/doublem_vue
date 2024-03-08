@@ -33,11 +33,7 @@ const style = computed(() => ({
 </script>
 
 <template>
-  <component
-    :is="props.tag"
-    :class="[{ [s.typo]: true }, props.class]"
-    :style="style"
-  >
+  <component :is="props.tag" :class="[props.class, s.typo]" :style="style">
     <WrapBalancer v-if="props.balancer">
       {{ props.text }}
     </WrapBalancer>

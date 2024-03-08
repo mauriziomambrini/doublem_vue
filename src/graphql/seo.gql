@@ -1,0 +1,19 @@
+query SEO($locale: SiteLocale!) {
+    _site {
+        faviconMetaTags {
+            attributes
+            content
+            tag
+        }
+        globalSeo(locale: $locale) {
+            fallbackSeo {
+                description
+                title
+                image {
+                    url
+                    alt
+                }
+            }
+        }
+    }
+}

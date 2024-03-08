@@ -2,5 +2,9 @@ query AboutPage($locale: SiteLocale!) {
     about {
         text(locale: $locale)
         title(locale: $locale)
+        seo(locale: $locale) {
+            title
+            description
+        }
     }
 }

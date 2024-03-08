@@ -6,10 +6,10 @@ import Skills from '@gql/skills.gql';
 import Markdown from '@components/typography/Markdown.vue';
 import Hero from '@components/layout/Hero.vue';
 import Tabs from '@components/utils/Tabs.vue';
-
 import SkillItem from '@components/items/SkillItem.vue';
 import Divider from '@components/utils/Divider.vue';
 import LabelBadge from '@components/badges/LabelBadge.vue';
+import MetaTags from '@components/utils/MetaTags.vue';
 const { t, locale } = useI18n();
 const { data } = useGQL(Skills);
 const tabs = ['all', 'development', 'design'];
@@ -61,6 +61,10 @@ watch(locale, updateTabsData);
 </script>
 
 <template>
+  <MetaTags
+    :title="data?.skill?.seo?.title"
+    :description="data?.skill?.seo?.description"
+  />
   <Hero
     v-if="data && data.skill && data.skill.title"
     :title="data?.skill.title"

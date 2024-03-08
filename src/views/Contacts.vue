@@ -2,10 +2,12 @@
 import { useI18n } from 'vue-i18n';
 import Typo from '@components/typography/Typo.vue';
 import Icon from '@components/utils/Icon.vue';
+import MetaTags from '@components/utils/MetaTags.vue';
 const { t } = useI18n();
 </script>
 
 <template>
+  <MetaTags />
   <div :class="s.wrapper">
     <Typo
       :class="s.pretitle"

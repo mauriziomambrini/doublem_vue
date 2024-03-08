@@ -10,7 +10,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div v-if="props.title" :class="[s.wrapper, { [s[theme]]: true }]">
+  <div v-if="props.title" :class="[s.wrapper, s[theme]]">
     <Typo
       v-if="props.theme === 'default'"
       :text="props.title"
