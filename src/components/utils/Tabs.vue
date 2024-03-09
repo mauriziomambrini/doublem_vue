@@ -60,14 +60,8 @@ const style = computed(() => ({
 </script>
 
 <template>
-  <div
-    :class="[
-      props.classes?.wrapper,
-      s.wrapper,
-      { [s[direction]]: true, [s[theme]]: true },
-    ]"
-  >
-    <div :class="s.tabs">
+  <div :class="[props.classes?.wrapper, s.wrapper, s[direction], s[theme]]">
+    <div :class="[props.classes?.tabs, s.tabs]">
       <div ref="indicator" :class="s.indicator" :style="style" />
       <div
         :ref="(el) => (tabRefs[index] = el)"

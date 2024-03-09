@@ -1,11 +1,20 @@
 <script setup>
-import { ref, watchEffect } from 'vue';
+import { defineProps, ref, watchEffect } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 const { locale } = useI18n();
 import useTranslation from '../../i18n/useTranslation.js';
 import Tabs from '@components/utils/Tabs.vue';
+import { TabsDirection, TabsTheme } from '@components/types.js';
+import useMediaQuery from '@composable/useMediaQuery.js';
 
+const props = defineProps({
+  direction: { type: String, default: 'column', validator: TabsDirection },
+  theme: { type: String, default: 'switch', validator: TabsTheme },
+});
+
+const { t } = useI18n();
+const media = useMediaQuery();
 const supportedLocales = useTranslation.supportedLocales;
 const router = useRouter();
 const tabsData = ref([]);
@@ -38,18 +47,22 @@ watchEffect(updateTabsData);
 <template>
   <Tabs
     :tabs="tabsData"
-    direction="column"
-    :classes="{ wrapper: s.wrapper, label: s.label }"
+    :theme="props.theme"
+    :direction="props.direction"
+    :classes="{ wrapper: s.wrapper, tabs: s.tabs }"
   />
 </template>
 
 <style module="s" lang="scss">
-.wrapper {
-  --lh-tab: 2em;
-  --lfs: var(--fs-md);
+@import '@styles/mixins';
 
+.wrapper {
+  --lfs: var(--fs-md);
   max-height: 4rem;
-  border: none;
-  padding: 0;
+
+  @include media(sm) {
+    border: none;
+    padding: 0;
+  }
 }
 </style>

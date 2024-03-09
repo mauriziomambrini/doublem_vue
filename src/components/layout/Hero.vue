@@ -21,6 +21,8 @@ const props = defineProps({
       tag="p"
     />
     <Typo :text="props.title" :class="s.title" tag="h1" />
+
+    <slot />
   </div>
 </template>
 
@@ -42,6 +44,9 @@ const props = defineProps({
 
 // If theme 'simple'
 .simple {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   .title {
     font-size: clamp(3rem, 25vw, 8vw);
   }

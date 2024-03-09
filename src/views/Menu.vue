@@ -1,11 +1,14 @@
 <script setup>
 import { useI18n } from 'vue-i18n';
+import useMediaQuery from '@composable/useMediaQuery.js';
 import { useMenu, MenuContext } from '@composable/useMenu.js';
 import Hero from '@components/layout/Hero.vue';
 import ItemNav from '@components/nav/ItemNav.vue';
 import MetaTags from '@components/utils/MetaTags.vue';
+import LangSwitch from '@components/nav/LangSwitch.vue';
 
 const { t } = useI18n();
+const media = useMediaQuery();
 const desktopMenu = useMenu(MenuContext.DESKTOP);
 const utilsMenu = useMenu(MenuContext.UTILS_PAGE);
 const allMenu = [...desktopMenu, ...utilsMenu];
@@ -13,7 +16,9 @@ const allMenu = [...desktopMenu, ...utilsMenu];
 
 <template>
   <MetaTags />
-  <Hero :title="$t('menu.label.menu')" theme="simple" />
+  <Hero :title="$t('menu.label.menu')" theme="simple">
+    <LangSwitch v-if="!media.sm.value" direction="row" />
+  </Hero>
   <ul :class="['pageContent', s.menu]" role="list">
     <li v-for="item in allMenu" :key="item.key">
       <ItemNav
