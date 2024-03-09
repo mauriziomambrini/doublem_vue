@@ -1,6 +1,4 @@
-import { computed } from 'vue';
 import * as ICONS from '@icons';
-import { useI18n } from 'vue-i18n';
 
 const MenuContext = {
   MOBILE: 'mobile',
@@ -12,159 +10,134 @@ const MenuContext = {
 };
 
 const useMenu = (context) => {
-  const { t } = useI18n();
-
-  const entries = computed(() => ({
+  const entries = {
     home: {
       key: 'home',
       icon: ICONS.home,
-      label: t('menu.label.home'),
+      label: 'menu.label.home',
       href: '/',
-      shortcut: ['H'],
     },
     about: {
       key: 'about',
       icon: ICONS.about,
-      label: t('menu.label.about'),
+      label: 'menu.label.about',
       href: '/about',
-      shortcut: ['A'],
     },
     what: {
       key: 'what',
       icon: ICONS.what,
-      label: t('menu.label.what'),
+      label: 'menu.label.what',
       href: '/what',
-      shortcut: ['W'],
     },
     skills: {
       key: 'skills',
       icon: ICONS.skills,
-      label: t('menu.label.skills'),
+      label: 'menu.label.skills',
       href: '/skills',
-      shortcut: ['S'],
     },
     education: {
       key: 'education',
       icon: ICONS.education,
-      label: t('menu.label.education'),
+      label: 'menu.label.education',
       href: '/education',
-      shortcut: ['K'],
     },
     experience: {
       key: 'experience',
       icon: ICONS.experience,
-      label: t('menu.label.experience'),
+      label: 'menu.label.experience',
       href: '/experience',
-      shortcut: ['E'],
     },
     privacy: {
       key: 'privacy',
       icon: ICONS.privacy,
-      label: t('menu.label.privacy'),
+      label: 'menu.label.privacy',
       href: '/privacy',
-      shortcut: ['P'],
     },
     menu: {
       key: 'menu',
       icon: ICONS.menu,
-      label: t('menu.label.menu'),
+      label: 'menu.label.menu',
       href: '/menu',
-      shortcut: ['ctrl', 'M'],
     },
     cv: {
       key: 'cv',
       icon: ICONS.download,
-      label: t('menu.label.cv_download'),
+      label: 'menu.label.cv_download',
       href: '/cv',
       target: '_blank',
     },
     contacts: {
       key: 'contacts',
       icon: ICONS.mail,
-      label: t('menu.label.contacts'),
+      label: 'menu.label.contacts',
       href: '/contacts',
     },
     linkedin: {
       key: 'linkedin',
       icon: ICONS.linkedin,
-      label: t('label.linkedin'),
+      label: 'label.linkedin',
       href: 'https://www.linkedin.com/in/mauriziomambrini/',
     },
     github: {
       key: 'github',
       icon: ICONS.github,
-      label: t('label.github'),
+      label: 'label.github',
       href: 'https://github.com/mauriziomambrini',
     },
     telegram: {
       key: 'telegram',
       icon: ICONS.telegram,
-      label: t('label.telegram'),
+      label: 'label.telegram',
       href: 'https://t.me/mauriziomambrini',
     },
-  }));
+  };
 
-  const mobile = computed(() => [
-    entries.value.home,
-    entries.value.what,
-    entries.value.skills,
-    entries.value.experience,
-    entries.value.menu,
-  ]);
+  const mobile = [
+    entries.home,
+    entries.what,
+    entries.skills,
+    entries.experience,
+    entries.menu,
+  ];
 
-  const desktop = computed(() => [
-    entries.value.home,
-    entries.value.what,
-    entries.value.about,
-    entries.value.skills,
-    entries.value.experience,
-    entries.value.education,
-  ]);
+  const desktop = [
+    entries.home,
+    entries.what,
+    entries.about,
+    entries.skills,
+    entries.experience,
+    entries.education,
+  ];
 
-  const page = computed(() => [
-    entries.value.home,
-    entries.value.what,
-    entries.value.about,
-    entries.value.skills,
-    entries.value.experience,
-    entries.value.education,
-  ]);
+  const page = [
+    entries.home,
+    entries.what,
+    entries.about,
+    entries.skills,
+    entries.experience,
+    entries.education,
+  ];
 
-  const utilsDesktop = computed(() => [
-    entries.value.contacts,
-    entries.value.menu,
-  ]);
+  const utilsDesktop = [entries.contacts, entries.menu];
 
-  const utilsPage = computed(() => [
-    entries.value.contacts,
-    entries.value.privacy,
-    entries.value.cv,
-  ]);
+  const utilsPage = [entries.contacts, entries.privacy, entries.cv];
 
-  const social = computed(() => [
-    entries.value.linkedin,
-    entries.value.github,
-    entries.value.telegram,
-  ]);
+  const social = [entries.linkedin, entries.github, entries.telegram];
 
-  const menu = computed(() => {
-    switch (context) {
-      case MenuContext.MOBILE:
-        return mobile.value;
-      case MenuContext.PAGE:
-        return page.value;
-      case MenuContext.UTILS_DESKTOP:
-        return utilsDesktop.value;
-      case MenuContext.UTILS_PAGE:
-        return utilsPage.value;
-      case MenuContext.SOCIAL:
-        return social.value;
-      default:
-        return desktop.value;
-    }
-  });
-
-  return menu;
+  switch (context) {
+    case MenuContext.MOBILE:
+      return mobile;
+    case MenuContext.PAGE:
+      return page;
+    case MenuContext.UTILS_DESKTOP:
+      return utilsDesktop;
+    case MenuContext.UTILS_PAGE:
+      return utilsPage;
+    case MenuContext.SOCIAL:
+      return social;
+    default:
+      return desktop;
+  }
 };
 
 export { MenuContext, useMenu };

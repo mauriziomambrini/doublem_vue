@@ -12,7 +12,7 @@ const { data } = useGQL(Privacy);
   <Hero
     v-if="data && data.privacy && data.privacy.text"
     :title="data?.privacy.title"
-    theme="page"
+    theme="simple"
   />
   <Markdown
     v-if="data && data.privacy && data.privacy.text"

@@ -1,4 +1,5 @@
 <script setup>
+import { useI18n } from 'vue-i18n';
 import useScrollDirection from '@composable/useScrollDirection.js';
 import useMediaQuery from '@composable/useMediaQuery.js';
 import { useMenu, MenuContext } from '@composable/useMenu.js';
@@ -6,6 +7,7 @@ import LangSwitch from '@components/nav/LangSwitch.vue';
 import ItemNav from '@components/nav/ItemNav.vue';
 import Divider from '@components/utils/Divider.vue';
 
+const { t } = useI18n();
 const { scrollDir } = useScrollDirection();
 const media = useMediaQuery();
 const mobileMenu = useMenu(MenuContext.MOBILE);
@@ -23,13 +25,13 @@ const utilsMenu = useMenu(MenuContext.UTILS_DESKTOP);
         <ItemNav
           :to="item.href"
           :icon="item.icon"
-          :label="item.label"
+          :label="t(item.label)"
           :theme="media.sm.value ? 'desktop' : 'mobile'"
         />
       </li>
       <Divider v-if="media.sm.value" theme="lineV" :spacing="[0.5]" />
       <li v-for="item in media.sm.value && utilsMenu" :key="item.key">
-        <ItemNav :to="item.href" :icon="item.icon" :label="item.label" />
+        <ItemNav :to="item.href" :icon="item.icon" :label="t(item.label)" />
       </li>
       <Divider v-if="media.sm.value" theme="lineV" :spacing="[0.5]" />
       <LangSwitch v-if="media.sm.value" />

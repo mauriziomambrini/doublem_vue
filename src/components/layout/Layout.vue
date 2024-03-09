@@ -69,4 +69,9 @@ div#app {
 .home {
   padding-bottom: 0;
 }
+
+.menu,
+.privacy {
+  padding-top: var(--s-inset);
+}
 </style>

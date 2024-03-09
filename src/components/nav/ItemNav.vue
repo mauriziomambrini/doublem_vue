@@ -2,6 +2,7 @@
 import { defineProps } from 'vue';
 import { useI18n } from 'vue-i18n';
 const { locale } = useI18n();
+import * as ICONS from '@icons';
 import Icon from '@components/utils/Icon.vue';
 import Typo from '@components/typography/Typo.vue';
 import { ItemNavClasses, ItemNavTheme } from '@components/types.js';
@@ -28,6 +29,11 @@ const props = defineProps({
       :class="[props.classes.label, s.label]"
       :text="props.label"
     />
+    <Icon
+      v-if="theme === 'page'"
+      :class="s.arrow"
+      :src="ICONS.arrowAngleRight"
+    />
   </RouterLink>
 </template>
 
@@ -36,6 +42,7 @@ const props = defineProps({
 .wrapper {
   --lw-icon: var(--s-xl);
   --lfs-label: var(--fs-xs);
+  --lw-arrow: var(--s-sm);
   display: flex;
   position: relative;
 
@@ -53,11 +60,23 @@ const props = defineProps({
   width: var(--lw-icon);
   min-width: var(--lw-icon);
   height: var(--lw-icon);
+  fill: var(--c-text);
 }
 
 .label {
   font-size: var(--lfs-label);
   text-align: center;
+}
+
+.arrow {
+  width: var(--lw-arrow);
+  min-width: var(--lw-arrow);
+  height: var(--lw-arrow);
+  fill: var(--c-text);
+
+  @include media(noTouch) {
+    display: none;
+  }
 }
 
 // Mobile and Desktop theme
@@ -113,5 +132,19 @@ const props = defineProps({
 .page {
   --lw-icon: var(--s-xxl);
   --lfs-label: var(--fs-xl);
+
+  align-items: center;
+  column-gap: 1rem;
+  padding: 1em 0;
+  box-shadow: var(--sw-inset-bottom);
+
+  .label {
+    margin-right: auto;
+  }
+
+  &:focus-visible {
+    border-radius: var(--r-uxxs);
+    outline-offset: 0.25rem;
+  }
 }
 </style>
