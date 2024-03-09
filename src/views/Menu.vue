@@ -4,6 +4,7 @@ import { useMenu, MenuContext } from '@composable/useMenu.js';
 import Hero from '@components/layout/Hero.vue';
 import ItemNav from '@components/nav/ItemNav.vue';
 import MetaTags from '@components/utils/MetaTags.vue';
+import Footer from '@components/layout/Footer.vue';
 
 const { t } = useI18n();
 const desktopMenu = useMenu(MenuContext.DESKTOP);
@@ -25,6 +26,7 @@ const allMenu = [...desktopMenu, ...utilsMenu];
       />
     </li>
   </ul>
+  <Footer />
 </template>
 
 <style module="s" lang="scss">

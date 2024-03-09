@@ -2,6 +2,16 @@ query EducationPage($locale: SiteLocale!) {
     education {
         text(locale: $locale)
         title(locale: $locale)
+        timeline(locale: $locale) {
+            today
+            title
+            tags
+            subtitle
+            startDate
+            shortDescription
+            fullDescription
+            endDate
+        }
         seo(locale: $locale) {
             title
             description
