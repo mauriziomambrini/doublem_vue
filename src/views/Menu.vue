@@ -9,9 +9,9 @@ import LangSwitch from '@components/nav/LangSwitch.vue';
 
 const { t } = useI18n();
 const media = useMediaQuery();
-const desktopMenu = useMenu(MenuContext.DESKTOP);
+const pageMenu = useMenu(MenuContext.PAGE);
 const utilsMenu = useMenu(MenuContext.UTILS_PAGE);
-const allMenu = [...desktopMenu, ...utilsMenu];
+const allMenu = [...pageMenu, ...utilsMenu];
 </script>
 
 <template>

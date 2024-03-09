@@ -103,10 +103,8 @@ const useMenu = (context) => {
   const desktop = [
     entries.home,
     entries.what,
-    entries.about,
-    entries.skills,
     entries.experience,
-    entries.education,
+    entries.skills,
   ];
 
   const page = [
