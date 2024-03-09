@@ -8,16 +8,14 @@ const props = defineProps({
   label: { type: String },
   class: { type: [String, Array] },
 });
+
+const label =
+  props.theme === 'tag' ? ['#', props.label].join(' ') : props.label;
 </script>
 
 <template>
-  <div :class="[props.class, s.wrapper]">
-    <Typo
-      :class="s.label"
-      :text="props.label"
-      tag="span"
-      color="var(--c-text)"
-    />
+  <div :class="[props.class, s.wrapper, s[theme]]">
+    <Typo :class="s.label" :text="label" tag="span" color="var(--c-text)" />
   </div>
 </template>
 
@@ -40,5 +38,17 @@ const props = defineProps({
 .label {
   font-size: clamp(var(--fs-sm), 15vw, var(--fs-df));
   line-height: 1.5;
+}
+
+// Tag theme
+.tag {
+  padding: 0.125em 0.75em;
+  border-radius: var(--s-df);
+  background-color: var(--c-primary-l);
+
+  .label {
+    color: var(--c-primary);
+    font-size: clamp(var(--fs-md), 4.5vw, var(--fs-lg));
+  }
 }
 </style>

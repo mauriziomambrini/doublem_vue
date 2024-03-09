@@ -3,6 +3,7 @@ import { defineProps } from 'vue';
 import Typo from '@components/typography/Typo.vue';
 import Markdown from '@components/typography/Markdown.vue';
 import DateBadge from '@components/badges/DateBadge.vue';
+import LabelBadge from '@components/badges/LabelBadge.vue';
 
 const props = defineProps({
   start: { type: String },
@@ -38,6 +39,9 @@ const props = defineProps({
         />
       </header>
       <Markdown v-if="props.text" :text="props.text" color="var(--c-text-l)" />
+      <div v-if="tags" :class="s.wrapTag">
+        <LabelBadge v-for="tag in tags" :label="tag" theme="tag" />
+      </div>
     </div>
   </div>
 </template>
@@ -135,5 +139,12 @@ const props = defineProps({
 
 .subtitle {
   font-size: clamp(var(--fs-lg), 4.5vw, 3rem);
+}
+
+.wrapTag {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 </style>

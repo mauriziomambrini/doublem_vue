@@ -28,6 +28,7 @@ const { data } = useGQL(Experience);
       :title="item.title"
       :subtitle="item.subtitle"
       :text="item.fullDescription"
+      :tags="item.tags"
     />
   </div>
 </template>

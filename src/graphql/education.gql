@@ -3,7 +3,6 @@ query EducationPage($locale: SiteLocale!) {
         text(locale: $locale)
         title(locale: $locale)
         timeline(locale: $locale) {
-            today
             title
             tags
             subtitle
