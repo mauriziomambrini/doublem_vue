@@ -66,7 +66,7 @@ watch(
 
 .responsiveText {
   @include media(lg) {
-    font-size: clamp(var(--fs-lg), 2cqw, 2rem) !important;
+    font-size: clamp(var(--fs-lg), 2cqw, 2rem);
   }
 }
 

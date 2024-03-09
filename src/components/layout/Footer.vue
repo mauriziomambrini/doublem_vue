@@ -21,7 +21,7 @@ const text = [copyright, textPoweredBy, linkPoweredBy, version].join(' ');
 </script>
 
 <template>
-  <footer :class="['pageContent', s.footer]">
+  <footer :class="[props.class, 'pageContent', s.footer]">
     <Markdown
       :text="text"
       base-size="sm"
@@ -32,6 +32,8 @@ const text = [copyright, textPoweredBy, linkPoweredBy, version].join(' ');
 </template>
 
 <style module="s" lang="scss">
-.wrapper {
+.footer {
+  display: flex;
+  justify-content: center;
 }
 </style>
