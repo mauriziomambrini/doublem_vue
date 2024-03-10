@@ -6,6 +6,7 @@ import Hero from '@components/layout/Hero.vue';
 import ItemNav from '@components/nav/ItemNav.vue';
 import MetaTags from '@components/utils/MetaTags.vue';
 import LangSwitch from '@components/nav/LangSwitch.vue';
+import Footer from '@components/layout/Footer.vue';
 
 const { t } = useI18n();
 const media = useMediaQuery();
@@ -30,6 +31,7 @@ const allMenu = [...pageMenu, ...utilsMenu];
       />
     </li>
   </ul>
+  <Footer :class="s.footer" />
 </template>
 
 <style module="s" lang="scss">
@@ -50,5 +52,11 @@ const allMenu = [...pageMenu, ...utilsMenu];
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
   }
+}
+
+// Footer
+.footer {
+  margin-top: clamp(2.5rem, 10vw, 5rem);
+  padding-inline: var(--s-inset);
 }
 </style>

@@ -3,7 +3,10 @@ import { useI18n } from 'vue-i18n';
 import Typo from '@components/typography/Typo.vue';
 import Icon from '@components/utils/Icon.vue';
 import MetaTags from '@components/utils/MetaTags.vue';
+import { MenuContext, useMenu } from '@composable/useMenu.js';
+
 const { t } = useI18n();
+const socialMenu = useMenu(MenuContext.SOCIAL);
 </script>
 
 <template>
@@ -21,6 +24,18 @@ const { t } = useI18n();
     <a :class="s.mail" href="mailto:hello@doublem.dev">
       hello@doublem<span />dev
     </a>
+    <div :class="s.wrapSocial">
+      <a
+        v-for="item in socialMenu"
+        :key="item.key"
+        :href="item.href"
+        target="_blank"
+        :class="s.social"
+      >
+        <Icon v-if="item.icon" :class="s.iconSocial" :src="item.icon" />
+        <Typo v-if="item.label" :class="s.labelSocial" :text="t(item.label)" />
+      </a>
+    </div>
   </div>
 </template>
 
@@ -58,5 +73,41 @@ const { t } = useI18n();
     text-decoration: underline;
     color: var(--c-primary);
   }
+}
+
+// Social
+.wrapSocial {
+  display: flex;
+  align-items: center;
+  gap: var(--s-df);
+  margin-top: 5rem;
+}
+
+.social {
+  --lc-social: var(--c-text-l);
+
+  display: grid;
+  grid-template-columns: 1rem 1fr;
+  gap: 0.25rem;
+  align-items: center;
+  color: var(--lc-social);
+  transition: var(--transition-025);
+}
+
+.iconSocial {
+  width: 1rem;
+  min-width: 1rem;
+  height: 1rem;
+  fill: var(--lc-social);
+  transition: var(--transition-025);
+}
+
+.labelSocial {
+  transition: var(--transition-025);
+}
+
+.social:hover {
+  --lc-social: var(--c-primary);
+  text-decoration: underline;
 }
 </style>

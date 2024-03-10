@@ -1,5 +1,4 @@
 // Layout
-export const LayoutTheme = (value) => ['default', 'simple'].includes(value);
 export const HeroTheme = (value) => ['default', 'simple'].includes(value);
 
 // Nav
