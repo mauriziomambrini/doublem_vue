@@ -8,7 +8,6 @@ import Experience from './views/Experience.vue';
 import Education from './views/Education.vue';
 import Menu from './views/Menu.vue';
 import Privacy from './views/Privacy.vue';
-import CV from './views/CV.vue';
 import Contacts from './views/Contacts.vue';
 
 const routes = [
@@ -60,11 +59,6 @@ const routes = [
         path: 'privacy',
         name: 'privacy',
         component: Privacy,
-      },
-      {
-        path: 'cv',
-        name: 'cv',
-        component: CV,
       },
     ],
   },

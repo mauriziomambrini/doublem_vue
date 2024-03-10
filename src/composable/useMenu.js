@@ -63,7 +63,7 @@ const useMenu = (context) => {
       key: 'cv',
       icon: ICONS.download,
       label: 'menu.label.cv_download',
-      href: '/cv',
+      href: '/cv_maurizio_mambrini.pdf',
       target: '_blank',
     },
     contacts: {
