@@ -142,7 +142,7 @@ const props = defineProps({
 
 .desktop:active::before,
 .desktop:hover::before {
-  background: var(--c-bg-d2);
+  background: var(--c-bg-d);
   animation: click 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
@@ -162,21 +162,37 @@ const props = defineProps({
   column-gap: 1rem;
   padding: 1em 0;
   box-shadow: var(--sw-inset-bottom);
+  transition: var(--transition-025);
 
   .label {
     margin-right: auto;
   }
-
-  &:focus-visible {
-    border-radius: var(--r-uxxs);
-    outline-offset: 0.25rem;
-  }
 }
 
+.page::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -0.5rem;
+  right: -0.5rem;
+  top: 0;
+  bottom: 0;
+  z-index: var(--z-index-0);
+  border-radius: var(--s-xxs);
+  transition: var(--transition-025);
+}
+
+.page:active::before,
+.page:hover::before {
+  background: var(--c-bg-d);
+}
+
+// Tab focus
 .desktop:focus-visible,
 .page:focus-visible {
   outline: 0.125em solid var(--c-primary);
   border-radius: var(--s-xxs);
+  box-shadow: none;
 }
 
 .desktop:focus-visible {
