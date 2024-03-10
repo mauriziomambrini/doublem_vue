@@ -1,4 +1,6 @@
 <script setup>
+import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import useScrollDirection from '@composable/useScrollDirection.js';
 import useMediaQuery from '@composable/useMediaQuery.js';
@@ -6,32 +8,60 @@ import { useMenu, MenuContext } from '@composable/useMenu.js';
 import LangSwitch from '@components/nav/LangSwitch.vue';
 import ItemNav from '@components/nav/ItemNav.vue';
 import Divider from '@components/utils/Divider.vue';
+import Typo from '@components/typography/Typo.vue';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
+const route = useRoute();
 const { scrollDir } = useScrollDirection();
 const media = useMediaQuery();
 const mobileMenu = useMenu(MenuContext.MOBILE);
 const desktopMenu = useMenu(MenuContext.DESKTOP);
 const utilsMenu = useMenu(MenuContext.UTILS_DESKTOP);
+
+const currentRoute = ref(route.path);
+
+watch(
+  route,
+  (to) => {
+    currentRoute.value = to.path;
+  },
+  { immediate: true },
+);
 </script>
 
 <template>
   <nav :class="[s.nav, { [s.hide]: scrollDir === 'down' }]">
-    <ul :class="s.menu" role="list">
+    <ul :class="s.menu" role="list" ref="menuRef">
       <li
         v-for="item in media.sm.value ? desktopMenu : mobileMenu"
         :key="item.key"
       >
+        <Typo
+          v-if="currentRoute === `/${locale + item.href}`"
+          class="visuallyHidden"
+          text="Current page:"
+        />
         <ItemNav
           :to="item.href"
           :icon="item.icon"
           :label="t(item.label)"
           :theme="media.sm.value ? 'desktop' : 'mobile'"
+          :active="currentRoute === `/${locale + item.href}`"
         />
       </li>
       <Divider v-if="media.sm.value" theme="lineV" :spacing="[0.5]" />
       <li v-for="item in media.sm.value && utilsMenu" :key="item.key">
-        <ItemNav :to="item.href" :icon="item.icon" :label="t(item.label)" />
+        <Typo
+          v-if="currentRoute === `/${locale + item.href}`"
+          class="visuallyHidden"
+          text="Current page:"
+        />
+        <ItemNav
+          :to="item.href"
+          :icon="item.icon"
+          :label="t(item.label)"
+          :active="currentRoute === `/${locale + item.href}`"
+        />
       </li>
       <Divider v-if="media.sm.value" theme="lineV" :spacing="[0.5]" />
       <LangSwitch v-if="media.sm.value" />
@@ -41,6 +71,14 @@ const utilsMenu = useMenu(MenuContext.UTILS_DESKTOP);
 
 <style module="s" lang="scss">
 @import '@styles/mixins';
+
+.indicator {
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  background-color: orange;
+  z-index: var(--z-index-top);
+}
 
 // Nav wrapper
 .nav {
@@ -71,6 +109,7 @@ const utilsMenu = useMenu(MenuContext.UTILS_DESKTOP);
   transition: var(--transition-025);
 
   @include media(sm) {
+    width: fit-content;
     height: auto;
     display: flex;
     justify-content: center;

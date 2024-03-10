@@ -11,8 +11,9 @@ const props = defineProps({
   theme: { type: String, default: 'desktop', validator: ItemNavTheme },
   to: { type: String, required: true },
   target: { type: String },
-  icon: String,
-  label: String,
+  icon: { type: String },
+  label: { type: String },
+  active: { type: Boolean },
   classes: { type: Object, default: () => ({}), validator: ItemNavClasses },
 });
 </script>
@@ -20,7 +21,12 @@ const props = defineProps({
 <template>
   <RouterLink
     :to="`/${locale + props.to}`"
-    :class="[props.classes.wrapper, s.wrapper, { [s[theme]]: true }]"
+    :class="[
+      props.classes.wrapper,
+      s.wrapper,
+      s[props.theme],
+      { [s.active]: props.active },
+    ]"
     :target="props.target"
   >
     <Icon v-if="icon" :class="[props.classes.icon, s.icon]" :src="props.icon" />
@@ -40,6 +46,7 @@ const props = defineProps({
 <style module="s" lang="scss">
 @import '@styles/mixins';
 .wrapper {
+  --lc-item: var(--c-text);
   --lw-icon: var(--s-xl);
   --lfs-label: var(--fs-xs);
   --lw-arrow: var(--s-sm);
@@ -50,21 +57,28 @@ const props = defineProps({
   cursor: pointer;
 }
 
+.wrapper:focus:not(:focus-visible) {
+  outline: 0;
+  outline-offset: 0.25rem;
+}
+
 .icon,
 .label {
   position: relative;
   z-index: var(--z-index-2);
+  transition: var(--transition-025);
 }
 
 .icon {
   width: var(--lw-icon);
   min-width: var(--lw-icon);
   height: var(--lw-icon);
-  fill: var(--c-text);
+  fill: var(--lc-item);
 }
 
 .label {
   font-size: var(--lfs-label);
+  color: var(--lc-item);
   text-align: center;
 }
 
@@ -76,6 +90,17 @@ const props = defineProps({
 
   @include media(noTouch) {
     display: none;
+  }
+}
+
+// Active
+.active {
+  --lc-item: var(--c-primary);
+
+  .label {
+    text-shadow:
+      0 0 0.05em var(--c-primary),
+      0 0 0.05em var(--c-primary);
   }
 }
 
@@ -103,7 +128,7 @@ const props = defineProps({
   height: 4rem;
 }
 
-.desktop::after {
+.desktop::before {
   content: '';
   display: block;
   position: absolute;
@@ -115,8 +140,8 @@ const props = defineProps({
   transition: var(--transition-025);
 }
 
-.desktop:active::after,
-.desktop:hover::after {
+.desktop:active::before,
+.desktop:hover::before {
   background: var(--c-bg-d2);
   animation: click 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
@@ -146,5 +171,19 @@ const props = defineProps({
     border-radius: var(--r-uxxs);
     outline-offset: 0.25rem;
   }
+}
+
+.desktop:focus-visible,
+.page:focus-visible {
+  outline: 0.125em solid var(--c-primary);
+  border-radius: var(--s-xxs);
+}
+
+.desktop:focus-visible {
+  outline-offset: 0.125rem;
+}
+
+.page:focus-visible {
+  outline-offset: 0.25rem;
 }
 </style>

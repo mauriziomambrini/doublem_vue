@@ -16,6 +16,7 @@ const showFooter = computed(
 </script>
 
 <template>
+  <a href="#main" :class="s.skipLink"> Skip to content </a>
   <template v-if="routeName === 'cv'">
     <slot />
   </template>
@@ -24,6 +25,7 @@ const showFooter = computed(
     <main
       v-if="props.theme === 'default'"
       :class="[s.main, s[props.routeName]]"
+      id="main"
     >
       <slot />
       <Footer v-if="showFooter" :class="s.footer" />
@@ -53,6 +55,16 @@ div#app {
   @include media(xl) {
     max-width: var(--w-max-df);
   }
+}
+
+// Visually hidden: Hides content except when viewed by screen readers
+.visuallyHidden {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+  overflow: hidden;
 }
 </style>
 
@@ -86,5 +98,23 @@ div#app {
 .menu,
 .privacy {
   padding-top: var(--s-inset);
+}
+
+// Skip link
+.skipLink {
+  position: absolute;
+  top: 0;
+  right: 100%; // moves off screen
+  z-index: var(
+    --z-index-top
+  ); // some number that will make sure it covers other elements
+
+  &:focus {
+    right: auto;
+    padding: 1em;
+    border: var(--c-body) 3px solid;
+    background-color: var(--c-text);
+    color: var(--c-body);
+  }
 }
 </style>

@@ -9,7 +9,6 @@ const currentRouteName = ref(route.name);
 watch(
   route,
   (to) => {
-    // Aggiorna `currentRouteName` con il nome della nuova rotta
     currentRouteName.value = to.name;
   },
   { immediate: true },
