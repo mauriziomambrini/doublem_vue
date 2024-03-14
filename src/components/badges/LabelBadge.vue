@@ -26,29 +26,29 @@ const label =
   width: fit-content;
   min-width: fit-content;
   display: flex;
-  gap: 0.25rem;
+  gap: 0.25em;
   justify-content: center;
   align-items: center;
-  padding-inline: 0.5rem;
+  padding-inline: 0.75em;
   border-radius: 0.25em;
   background-color: var(--c-bg-d2);
+  font-size: var(--fsr-md-lg);
   cursor: inherit;
 }
 
 .label {
-  font-size: clamp(var(--fs-sm), 15vw, var(--fs-df));
-  line-height: 1.5;
+  font-size: var(--fsr-md-lg);
+  line-height: 1.75;
 }
 
 // Tag theme
 .tag {
-  padding: 0.125em 0.75em;
+  padding: 0.125em 1em;
   border-radius: var(--s-df);
-  background-color: var(--c-primary-l);
+  background-color: var(--c-bg-d);
 
   .label {
-    color: var(--c-primary);
-    font-size: clamp(var(--fs-md), 4.5vw, var(--fs-lg));
+    color: var(--c-text-l);
   }
 }
 </style>

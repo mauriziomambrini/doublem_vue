@@ -12,6 +12,7 @@ const props = defineProps({
 <template>
   <div
     v-if="props.title"
+    :id="`hero_${theme}`"
     :class="[s.wrapper, s[theme], { pageContent: theme === 'simple' }]"
   >
     <Typo
@@ -27,9 +28,7 @@ const props = defineProps({
 </template>
 
 <style module="s" lang="scss">
-.wrapper {
-  width: 100%;
-}
+@import '@styles/mixins';
 
 .title {
   font-weight: var(--fw-bold);
@@ -54,6 +53,8 @@ const props = defineProps({
 
 // If theme 'default'
 .default {
+  @include inset-spacing(var(--s-inset));
+  width: 100vw;
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;

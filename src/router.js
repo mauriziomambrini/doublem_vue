@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import useTranslation from './i18n/useTranslation.js';
 import Home from './views/Home.vue';
+import Why from './views/Why.vue';
 import What from './views/What.vue';
 import About from './views/About.vue';
 import Skills from './views/Skills.vue';
@@ -19,6 +20,11 @@ const routes = [
         path: '',
         name: 'home',
         component: Home,
+      },
+      {
+        path: 'why',
+        name: 'why',
+        component: Why,
       },
       {
         path: 'what',

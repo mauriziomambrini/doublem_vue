@@ -25,11 +25,10 @@ div#app {
   flex-direction: column;
 }
 
-.pageContent {
+main > *:not(#hero_default) {
   width: 100%;
   max-width: var(--w-max-xs);
-  margin: 0 auto;
-  padding-inline: var(--s-inset);
+  margin-inline: auto;
 
   @include media(lg) {
     max-width: var(--w-max-sm);
@@ -64,6 +63,10 @@ div#app {
   @include media(sm) {
     row-gap: var(--s-tr);
   }
+}
+
+.main:not(.home) {
+  padding-inline: var(--s-inset);
 }
 
 // Home page

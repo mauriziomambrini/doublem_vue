@@ -69,14 +69,14 @@ watch(locale, updateTabsData);
     v-if="data && data.skill && data.skill.title"
     :title="data?.skill.title"
   />
-  <Markdown
-    v-if="data?.skill && data.skill.text"
-    class="pageContent"
-    :text="data?.skill.text"
-  />
+  <Markdown v-if="data?.skill && data.skill.text" :text="data?.skill.text" />
 
-  <div v-if="data && data.skill" :class="['pageContent', s.wrapper]">
-    <Tabs :tabs="tabsData" direction="row" />
+  <div v-if="data && data.skill" :class="s.wrapper">
+    <Tabs
+      :classes="{ wrapper: s.wrapperTab }"
+      :tabs="tabsData"
+      direction="row"
+    />
     <section
       v-for="(skills, level) in groupedSkills"
       :class="s.section"
@@ -106,11 +106,15 @@ watch(locale, updateTabsData);
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: var(--s-db);
+  row-gap: var(--s-tr);
 
   @include media(sm) {
-    row-gap: var(--s-tr);
+    row-gap: var(--s-qr);
   }
+}
+
+.wrapperTab {
+  font-size: clamp(var(--fs-df), 2vw, var(--fs-xl));
 }
 
 .section {

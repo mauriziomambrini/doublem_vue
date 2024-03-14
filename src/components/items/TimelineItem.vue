@@ -134,11 +134,11 @@ const props = defineProps({
 }
 
 .title {
-  font-size: clamp(var(--fs-xxl), 4.5vw, 4rem);
+  font-size: var(--fsr-xxl-qr);
 }
 
 .subtitle {
-  font-size: clamp(var(--fs-lg), 4.5vw, 3rem);
+  font-size: var(--fsr-lg-big);
 }
 
 .wrapTag {

@@ -59,25 +59,25 @@ const endDate = computed(() =>
 <style module="s" lang="scss">
 .wrapper {
   max-width: fit-content;
+  height: 1.75em;
   display: flex;
-  gap: 0.25rem;
+  gap: 0.25em;
   justify-content: center;
   align-items: center;
-  padding-inline: 0.5rem;
+  padding-inline: 0.5em;
   border-radius: 0.25em;
   background-color: var(--c-bg-d2);
+  font-size: var(--fsr-md-lg);
   cursor: inherit;
-  font-size: var(--lfs);
 }
 
 .label {
-  font-size: clamp(var(--fs-md), 1.5vw, var(--fs-xl));
-  line-height: 1.5;
+  font-size: var(--fsr-md-lg);
   text-transform: uppercase;
 }
 
 .arrow {
-  --lw-icon: clamp(var(--fs-md), 1.5vw, var(--fs-xl));
+  --lw-icon: calc(var(--fsr-md-lg) - 0.25em);
   width: var(--lw-icon);
   min-width: var(--lw-icon);
   height: var(--lw-icon);

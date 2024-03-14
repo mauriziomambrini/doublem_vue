@@ -14,7 +14,7 @@ const { t, locale } = useI18n();
 const router = useRouter();
 
 const handleClick = () => {
-  router.push(`/${locale.value}/what`);
+  router.push(`/${locale.value}/why`);
 };
 </script>
 
@@ -55,6 +55,8 @@ const handleClick = () => {
 @import '@styles/mixins';
 
 .wrapper {
+  @include inset-spacing(var(--s-inset));
+  max-width: 100% !important;
   height: 100dvh;
   display: flex;
   flex-direction: column;
@@ -68,7 +70,7 @@ const handleClick = () => {
 }
 
 .pretitle {
-  width: 100%;
+  width: 100vw;
   position: relative;
   z-index: var(--z-index-top);
   font-weight: var(--fw-bold);
@@ -119,13 +121,18 @@ const handleClick = () => {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 3em;
+  gap: 1.5em;
+  font-size: var(--fsr-xxl-qr);
   animation: title-fade-in 0.25s ease-in 1.825s forwards;
   opacity: 0;
 
   @include media(sm) {
     align-items: center;
     text-align: center;
+  }
+
+  @include media(lg) {
+    gap: 2em;
   }
 }
 
@@ -136,7 +143,7 @@ const handleClick = () => {
 }
 
 .title {
-  font-size: clamp(var(--fs-xxl), 5cqw, 2.5cqw);
+  font-size: var(--fsr-xxl-qr);
 
   @include media(xl) {
     max-width: 75%;
@@ -144,9 +151,10 @@ const handleClick = () => {
 }
 
 .cta {
-  --lfs-label: clamp(var(--fs-df), 3.5vw, 1.5vw);
+  //--lfs-label: clamp(var(--fs-df), 3.5vw, 1.5vw);
 
   min-width: 100%;
+  font-size: clamp(var(--fs-df), 3.5vw, 1.5vw);
 
   @include media(sm) {
     min-width: fit-content;

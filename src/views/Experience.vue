@@ -14,12 +14,8 @@ const { data } = useGQL(Experience);
     :description="data?.experience?.seo?.description"
   />
   <Hero v-if="data?.experience?.text" :title="data?.experience.title" />
-  <Markdown
-    v-if="data?.experience?.text"
-    class="pageContent"
-    :text="data?.experience.text"
-  />
-  <div v-if="data?.experience" class="pageContent">
+  <Markdown v-if="data?.experience?.text" :text="data?.experience.text" />
+  <div v-if="data?.experience">
     <TimelineItem
       v-for="item in data.experience.timeline"
       :key="item.title"

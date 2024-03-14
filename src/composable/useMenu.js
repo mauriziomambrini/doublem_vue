@@ -29,6 +29,12 @@ const useMenu = (context) => {
       label: 'menu.label.what',
       href: '/what',
     },
+    why: {
+      key: 'why',
+      icon: ICONS.what,
+      label: 'menu.label.why',
+      href: '/why',
+    },
     skills: {
       key: 'skills',
       icon: ICONS.skills,
@@ -94,14 +100,15 @@ const useMenu = (context) => {
 
   const mobile = [
     entries.home,
+    entries.why,
     entries.what,
-    entries.skills,
     entries.experience,
     entries.menu,
   ];
 
   const desktop = [
     entries.home,
+    entries.why,
     entries.what,
     entries.experience,
     entries.skills,
@@ -109,11 +116,12 @@ const useMenu = (context) => {
 
   const page = [
     entries.home,
+    entries.why,
     entries.what,
-    entries.about,
-    entries.skills,
     entries.experience,
+    entries.skills,
     entries.education,
+    entries.about,
   ];
 
   const utilsDesktop = [entries.contacts, entries.menu];

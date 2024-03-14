@@ -14,12 +14,8 @@ const { data } = useGQL(Education);
     :description="data?.education?.seo?.description"
   />
   <Hero v-if="data?.education?.text" :title="data.education.title" />
-  <Markdown
-    v-if="data?.education?.text"
-    class="pageContent"
-    :text="data?.education.text"
-  />
-  <div v-if="data?.education" class="pageContent">
+  <Markdown v-if="data?.education?.text" :text="data?.education.text" />
+  <div v-if="data?.education">
     <TimelineItem
       v-for="item in data.education.timeline"
       :key="item.title"

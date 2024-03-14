@@ -18,7 +18,6 @@ const { data } = useGQL(About);
   />
   <Markdown
     v-if="data && data.about && data.about.text"
-    class="pageContent"
     :text="data?.about.text"
   />
 </template>

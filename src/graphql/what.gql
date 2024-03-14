@@ -1,7 +1,19 @@
 query WhatPage($locale: SiteLocale!) {
     what {
-        text(locale: $locale)
         title(locale: $locale)
+        text(locale: $locale)
+        works(locale: $locale) {
+            startDate
+            endDate
+            title
+            fullDescription
+            tags
+            gallery {
+                id
+                alt(locale: $locale)
+                url
+            }
+        }
         seo(locale: $locale) {
             title
             description

@@ -16,7 +16,6 @@ const { data } = useGQL(Privacy);
   />
   <Markdown
     v-if="data && data.privacy && data.privacy.text"
-    class="pageContent"
     :text="data?.privacy.text"
   />
 </template>

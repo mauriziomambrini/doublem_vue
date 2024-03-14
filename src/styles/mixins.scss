@@ -31,6 +31,12 @@ $breakpoints: (
   }
 }
 
+// Inset spacing
+@mixin inset-spacing($inset) {
+  padding-inline: $inset;
+  margin-inline: calc(#{$inset} * -1);
+}
+
 // Overflow X
 @mixin overflow-x {
   overflow-x: auto;

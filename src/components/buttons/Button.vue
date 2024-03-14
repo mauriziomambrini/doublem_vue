@@ -63,6 +63,7 @@ const props = defineProps({
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: var(--lfs-label);
   text-decoration: none;
   color: var(--label);
   transition: var(--transition-025);
@@ -94,7 +95,7 @@ const props = defineProps({
 }
 
 .label {
-  font-size: var(--lfs-label);
+  font-size: 1em;
   color: var(--lc-label);
   transition: var(--transition-025);
 }

@@ -84,9 +84,8 @@ const style = computed(() => ({
 <style module="s" lang="scss">
 .wrapper {
   --lh-tab: 2em;
-  --lfs: var(--fs-df);
 
-  font-size: var(--lfs);
+  font-size: var(--fs-df);
 }
 
 .tabs {

@@ -32,7 +32,7 @@ const props = defineProps({
 @import '@styles/mixins';
 
 .wrapper {
-  --icon-size: clamp(3rem, 5cqw, 5rem);
+  --icon-size: clamp(3rem, 3.5vw, 5rem);
 
   display: flex;
   flex-direction: column;
@@ -51,7 +51,7 @@ const props = defineProps({
   white-space: nowrap;
 
   @include media(lg) {
-    font-size: clamp(var(--fs-md), 90cqw, var(--fs-xl));
+    font-size: var(--fsr-md-lg);
   }
 }
 </style>

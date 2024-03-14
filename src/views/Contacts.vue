@@ -52,9 +52,7 @@ const socialMenu = useMenu(MenuContext.SOCIAL);
 }
 
 .pretitle {
-  @include media(lg) {
-    font-size: clamp(var(--fs-lg), 25cqw, var(--fs-db));
-  }
+  font-size: var(--fsr-lg-big);
 }
 
 .mail {
@@ -77,32 +75,35 @@ const socialMenu = useMenu(MenuContext.SOCIAL);
 
 // Social
 .wrapSocial {
+  --lfsr: var(--fsr-df-db);
+  --lc-social: var(--c-text-l);
+
   display: flex;
   align-items: center;
-  gap: var(--s-df);
+  gap: calc(var(--lfsr) * 1.25);
   margin-top: 5rem;
 }
 
 .social {
-  --lc-social: var(--c-text-l);
-
   display: grid;
-  grid-template-columns: 1rem 1fr;
-  gap: 0.25rem;
+  grid-template-columns: auto 1fr;
+  gap: 0.25em;
   align-items: center;
+  font-size: var(--lfsr);
   color: var(--lc-social);
   transition: var(--transition-025);
 }
 
 .iconSocial {
-  width: 1rem;
-  min-width: 1rem;
-  height: 1rem;
+  width: var(--lfsr);
+  min-width: var(--lfsr);
+  height: var(--lfsr);
   fill: var(--lc-social);
   transition: var(--transition-025);
 }
 
 .labelSocial {
+  font-size: var(--lfsr);
   transition: var(--transition-025);
 }
 

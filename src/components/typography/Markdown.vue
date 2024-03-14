@@ -21,17 +21,20 @@ const md = new MarkdownIt();
 
 md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
   const aIndex = tokens[idx].attrIndex('target');
+  const relIndex = tokens[idx].attrIndex('rel');
+
   if (aIndex < 0) {
     tokens[idx].attrPush(['target', '_blank']);
   } else {
     tokens[idx].attrs[aIndex][1] = '_blank';
   }
-  const relIndex = tokens[idx].attrIndex('rel');
+
   if (relIndex < 0) {
     tokens[idx].attrPush(['rel', 'noopener noreferrer']);
   } else {
     tokens[idx].attrs[relIndex][1] = 'noopener noreferrer';
   }
+
   return self.renderToken(tokens, idx, options);
 };
 
@@ -65,18 +68,16 @@ watch(
 }
 
 .responsiveText {
-  @include media(lg) {
-    font-size: clamp(var(--fs-lg), 2cqw, 2rem);
-  }
+  font-size: var(--fsr-df-db);
 }
 
 // Margin
 .text *:is(h1, h2, h3, h4, h6):not(:first-child) {
-  margin-top: calc(var(--lfs) * 2);
+  margin-top: 2em;
 }
 
 .text *:is(h1, h2, h3, h4, h6, p, ul, ol, li):not(:last-child) {
-  margin-bottom: var(--lfs);
+  margin-bottom: 1.5em;
 }
 
 // Headings
@@ -101,6 +102,10 @@ watch(
 // Paragraph and list
 .text *:is(p, li) {
   line-height: 1.5;
+}
+
+.responsiveText *:is(p, li) {
+  line-height: 1.75;
 }
 
 .text ul > li::before {

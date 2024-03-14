@@ -1,0 +1,10 @@
+query WhyPage($locale: SiteLocale!) {
+    why {
+        title(locale: $locale)
+        text(locale: $locale)
+        seo(locale: $locale) {
+            title
+            description
+        }
+    }
+}
