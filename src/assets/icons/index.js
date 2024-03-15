@@ -16,6 +16,7 @@ import privacy from './svg/privacy.svg';
 import skills from './svg/skills.svg';
 import telegram from './svg/telegram.svg';
 import what from './svg/what.svg';
+import why from './svg/why.svg';
 
 export {
   about,
@@ -36,4 +37,5 @@ export {
   skills,
   telegram,
   what,
+  why,
 };

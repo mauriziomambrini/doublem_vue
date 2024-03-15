@@ -10,7 +10,7 @@ const props = defineProps({
 
 <template>
   <a href="#main" :class="s.skipLink"> Skip to content </a>
-  <Nav />
+  <Nav v-if="props.routeName !== 'not-found'" />
   <main :class="[s.main, s[props.routeName]]" id="main">
     <slot />
   </main>

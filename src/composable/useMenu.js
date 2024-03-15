@@ -31,7 +31,7 @@ const useMenu = (context) => {
     },
     why: {
       key: 'why',
-      icon: ICONS.what,
+      icon: ICONS.why,
       label: 'menu.label.why',
       href: '/why',
     },
