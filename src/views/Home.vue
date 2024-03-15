@@ -144,6 +144,10 @@ const handleClick = () => {
   @include media(xl) {
     max-width: 75%;
   }
+
+  @include media(xxl) {
+    max-width: 50%;
+  }
 }
 
 .cta {
