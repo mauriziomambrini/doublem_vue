@@ -14,6 +14,7 @@
   "devDependencies": {
     "@intlify/unplugin-vue-i18n": "^2.0.0",
     "@unhead/vue": "^1.8.11",
+    "@vercel/speed-insights": "^1.0.10",
     "@vitejs/plugin-vue": "^4.5.2",
     "add": "^2.0.6",
     "date-fns": "^3.3.1",

@@ -1,6 +1,7 @@
 <script setup>
 import { watch, ref } from 'vue';
 import { useRoute } from 'vue-router';
+import { SpeedInsights } from '@vercel/speed-insights/vue';
 import Layout from '@components/layout/Layout.vue';
 
 const route = useRoute();
@@ -16,6 +17,7 @@ watch(
 </script>
 
 <template>
+  <SpeedInsights />
   <Layout :routeName="currentRouteName">
     <RouterView />
   </Layout>
