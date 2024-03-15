@@ -99,7 +99,7 @@ watch(
 .menu {
   width: 100%;
   max-width: var(--w-max-xs);
-  height: 3.5rem;
+  height: 4rem;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
