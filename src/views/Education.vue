@@ -1,11 +1,9 @@
 <script setup>
 import useGQL from '@composable/useGQL.js';
 import Education from '@gql/education.gql';
-import Markdown from '@components/typography/Markdown.vue';
 import Hero from '@components/layout/Hero.vue';
 import MetaTags from '@components/utils/MetaTags.vue';
 import TimelineItem from '@components/items/TimelineItem.vue';
-import Divider from '@components/utils/Divider.vue';
 const { data } = useGQL(Education);
 </script>
 
@@ -15,8 +13,6 @@ const { data } = useGQL(Education);
     :description="data?.education?.seo?.description"
   />
   <Hero v-if="data?.education?.text" :title="data.education.title" />
-  <Markdown v-if="data?.education?.text" :text="data?.education.text" />
-  <Divider :spacing="[1]" />
   <div v-if="data?.education">
     <TimelineItem
       v-for="item in data.education.timeline"
