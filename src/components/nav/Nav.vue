@@ -72,14 +72,6 @@ watch(
 <style module="s" lang="scss">
 @import '@styles/mixins';
 
-.indicator {
-  width: 2rem;
-  height: 2rem;
-  position: absolute;
-  background-color: orange;
-  z-index: var(--z-index-top);
-}
-
 // Nav wrapper
 .nav {
   width: 100vw;
