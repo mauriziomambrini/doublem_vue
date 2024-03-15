@@ -95,6 +95,7 @@ watch(
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
+  padding-inline: 0.5rem;
   position: relative;
   background-color: var(--c-body);
   box-shadow: var(--sw-inset-top);
