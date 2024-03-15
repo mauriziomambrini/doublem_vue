@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, watch, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import useScrollDirection from '@composable/useScrollDirection.js';
@@ -21,12 +21,23 @@ const utilsMenu = useMenu(MenuContext.UTILS_DESKTOP);
 const currentRoute = ref(route.path);
 
 watch(
-  route,
-  (to) => {
-    currentRoute.value = to.path;
+  () => route.path,
+  (newPath) => {
+    nextTick(() => {
+      currentRoute.value = newPath;
+    });
   },
   { immediate: true },
 );
+
+const isActive = (itemHref) => {
+  const normalizedCurrentRoute = currentRoute.value.endsWith('/')
+    ? currentRoute.value
+    : `${currentRoute.value}/`;
+  const normalizedItemHref = itemHref.endsWith('/') ? itemHref : `${itemHref}/`;
+
+  return normalizedCurrentRoute === `/${locale.value}${normalizedItemHref}`;
+};
 </script>
 
 <template>
@@ -46,7 +57,7 @@ watch(
           :icon="item.icon"
           :label="t(item.label)"
           :theme="media.sm.value ? 'desktop' : 'mobile'"
-          :active="currentRoute === `/${locale + item.href}`"
+          :active="isActive(item.href)"
         />
       </li>
       <Divider v-if="media.sm.value" theme="lineV" :spacing="[0.5]" />
@@ -60,7 +71,7 @@ watch(
           :to="item.href"
           :icon="item.icon"
           :label="t(item.label)"
-          :active="currentRoute === `/${locale + item.href}`"
+          :active="isActive(item.href)"
         />
       </li>
       <Divider v-if="media.sm.value" theme="lineV" :spacing="[0.5]" />
