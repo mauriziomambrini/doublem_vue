@@ -21,7 +21,7 @@ const text = [copyright, textPoweredBy, linkPoweredBy, version].join(' ');
 </script>
 
 <template>
-  <footer :class="[props.class, 'pageContent']">
+  <footer :class="props.class">
     <Markdown
       :text="text"
       base-size="sm"

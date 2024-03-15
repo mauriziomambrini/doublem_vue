@@ -8,6 +8,7 @@ import experience from './svg/experience.svg';
 import github from './svg/github.svg';
 import home from './svg/home.svg';
 import lang from './svg/lang.svg';
+import link from './svg/link.svg';
 import linkedin from './svg/linkedin.svg';
 import mail from './svg/mail.svg';
 import menu from './svg/menu.svg';
@@ -27,6 +28,7 @@ export {
   github,
   home,
   lang,
+  link,
   linkedin,
   mail,
   menu,

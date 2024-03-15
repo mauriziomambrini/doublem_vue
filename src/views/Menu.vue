@@ -20,7 +20,7 @@ const allMenu = [...pageMenu, ...utilsMenu];
   <Hero :title="$t('menu.label.menu')" theme="simple">
     <LangSwitch v-if="!media.sm.value" direction="row" />
   </Hero>
-  <ul :class="['pageContent', s.menu]" role="list">
+  <ul :class="s.menu" role="list">
     <li v-for="item in allMenu" :key="item.key">
       <ItemNav
         :to="item.href"
@@ -56,7 +56,6 @@ const allMenu = [...pageMenu, ...utilsMenu];
 
 // Footer
 .footer {
-  margin-top: clamp(2.5rem, 10vw, 5rem);
-  padding-inline: var(--s-inset);
+  margin-top: 1.5rem;
 }
 </style>

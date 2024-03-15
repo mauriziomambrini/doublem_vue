@@ -18,7 +18,7 @@ const { data } = useGQL(What);
   <Markdown v-if="data?.what?.text" :text="data.what.text" />
 
   <template v-if="data?.what" v-for="item in data.what.works" :key="item.title">
-    <Divider :spacing="[0]" />
+    <Divider :spacing="[1]" />
     <WorkItem
       :start="item.startDate"
       :end="item.endDate"

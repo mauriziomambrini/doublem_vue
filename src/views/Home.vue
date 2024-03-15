@@ -61,12 +61,9 @@ const handleClick = () => {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding: 1.5rem;
   overflow: hidden;
-
-  @include media(sm) {
-    align-items: center;
-  }
 }
 
 .pretitle {
@@ -74,13 +71,14 @@ const handleClick = () => {
   position: relative;
   z-index: var(--z-index-top);
   font-weight: var(--fw-bold);
-  font-size: clamp(var(--fs-db), 25cqw, 50cqw);
+  font-size: 25cqw;
+  text-align: center;
   transform: translateX(-31%);
   animation: pretitle-slide-in 0.5s ease-in 1.125s forwards;
 
   @include media(sm) {
-    line-height: 0.5;
-    text-align: center;
+    font-size: 15cqw;
+    line-height: 0.75;
   }
 
   * {
@@ -117,19 +115,17 @@ const handleClick = () => {
     transform: translateX(0%);
   }
 }
+
 .wrapTitle {
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1.5em;
-  font-size: var(--fsr-xxl-qr);
+  font-size: clamp(var(--fs-xxl), 3vw, var(--fs-big));
+  text-align: center;
   animation: title-fade-in 0.25s ease-in 1.825s forwards;
   opacity: 0;
-
-  @include media(sm) {
-    align-items: center;
-    text-align: center;
-  }
 
   @include media(lg) {
     gap: 2em;
@@ -143,7 +139,7 @@ const handleClick = () => {
 }
 
 .title {
-  font-size: var(--fsr-xxl-qr);
+  font-size: 1em;
 
   @include media(xl) {
     max-width: 75%;
@@ -151,10 +147,8 @@ const handleClick = () => {
 }
 
 .cta {
-  //--lfs-label: clamp(var(--fs-df), 3.5vw, 1.5vw);
-
   min-width: 100%;
-  font-size: clamp(var(--fs-df), 3.5vw, 1.5vw);
+  font-size: clamp(var(--fs-df), 3vw, var(--fs-xl));
 
   @include media(sm) {
     min-width: fit-content;

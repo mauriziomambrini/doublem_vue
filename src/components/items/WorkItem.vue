@@ -25,12 +25,7 @@ const props = defineProps({
       weight="bold"
     />
     <DateBadge :start="props.start" :end="props.end" theme="year" />
-    <Markdown
-      v-if="props.text"
-      :class="s.text"
-      :text="props.text"
-      color="var(--c-text-l)"
-    />
+    <Markdown v-if="props.text" :class="s.text" :text="props.text" />
 
     <div v-if="tags" :class="s.wrapTag">
       <LabelBadge v-for="tag in tags" :key="tag" :label="tag" theme="tag" />
@@ -76,18 +71,18 @@ const props = defineProps({
   align-items: center;
 }
 
-.text a:first-of-type {
-  margin-top: var(--s-xxl);
+.text a + a {
+  margin-left: 0.5em;
 }
 
 .text a:before {
-  --lw-icon: clamp(var(--fs-lg), 2cqw, 2rem);
+  --lw-icon: calc(var(--fsr-df-db) * 0.75);
 
   content: '';
   display: inline-block;
   width: var(--lw-icon);
   height: var(--lw-icon);
-  background-image: url('../../assets/icons/svg/about.svg');
+  background-image: url('../../assets/icons/svg/link.svg');
   background-size: contain;
   background-repeat: no-repeat;
   margin-right: var(--s-xxs);
@@ -99,6 +94,7 @@ const props = defineProps({
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-top: var(--s-db);
 }
 
 // Gallery
@@ -109,7 +105,7 @@ const props = defineProps({
   align-items: center;
   aspect-ratio: 16/10;
   margin-top: var(--s-qr);
-  border-radius: var(--s-xxl);
+  border-radius: clamp(var(--s-df), 3vw, var(--s-xxl));
   background: var(--c-bg);
   overflow: hidden;
 

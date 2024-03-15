@@ -38,7 +38,7 @@ const props = defineProps({
           size="lg"
         />
       </header>
-      <Markdown v-if="props.text" :text="props.text" color="var(--c-text-l)" />
+      <Markdown v-if="props.text" :text="props.text" />
       <div v-if="tags" :class="s.wrapTag">
         <LabelBadge v-for="tag in tags" :label="tag" theme="tag" />
       </div>

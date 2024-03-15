@@ -5,6 +5,7 @@ import Markdown from '@components/typography/Markdown.vue';
 import Hero from '@components/layout/Hero.vue';
 import TimelineItem from '@components/items/TimelineItem.vue';
 import MetaTags from '@components/utils/MetaTags.vue';
+import Divider from '@components/utils/Divider.vue';
 const { data } = useGQL(Experience);
 </script>
 
@@ -15,6 +16,7 @@ const { data } = useGQL(Experience);
   />
   <Hero v-if="data?.experience?.text" :title="data?.experience.title" />
   <Markdown v-if="data?.experience?.text" :text="data?.experience.text" />
+  <Divider :spacing="[1]" />
   <div v-if="data?.experience">
     <TimelineItem
       v-for="item in data.experience.timeline"
