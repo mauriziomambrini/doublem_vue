@@ -6,7 +6,6 @@ query ExperiencePage($locale: SiteLocale!) {
             title
             startDate
             fullDescription
-            shortDescription
             endDate
             tags
             subtitle

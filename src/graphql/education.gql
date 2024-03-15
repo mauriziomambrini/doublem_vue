@@ -7,7 +7,6 @@ query EducationPage($locale: SiteLocale!) {
             tags
             subtitle
             startDate
-            shortDescription
             fullDescription
             endDate
         }
