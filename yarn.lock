@@ -994,6 +994,11 @@ unplugin@^1.1.0:
     webpack-sources "^3.2.3"
     webpack-virtual-modules "^0.6.0"
 
+vite-plugin-sitemap@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/vite-plugin-sitemap/-/vite-plugin-sitemap-0.5.3.tgz#5aea2350d4d78d1cc7578612d5a1299f9599b6c7"
+  integrity sha512-DSqZLAkXaNgoJLcaxjJHrfWjIIiZRSuZIseE7ihJYUvPFG4OsvXn/+Oujmzbs+6tV7yu1dn7uhWXpV7QuiH/1g==
+
 vite-raw-plugin@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/vite-raw-plugin/-/vite-raw-plugin-1.0.2.tgz#7be8a6e1275b7a0eb6753d066337957c15f438cd"

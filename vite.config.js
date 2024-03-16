@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import rawPlugin from 'vite-raw-plugin';
+import Sitemap from 'vite-plugin-sitemap';
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
 import path from 'path';
 
@@ -8,6 +9,7 @@ import path from 'path';
 export default defineConfig({
   plugins: [
     vue(),
+    Sitemap(),
     VueI18nPlugin({
       runtimeOnly: false,
       include: './src/i18n/langs/*',
