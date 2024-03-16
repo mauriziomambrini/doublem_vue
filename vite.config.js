@@ -5,14 +5,12 @@ import Sitemap from 'vite-plugin-sitemap';
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
 import path from 'path';
 
-const hostname = import.meta.env.VITE_HOSTNAME;
-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
     Sitemap({
-      hostname,
+      hostname: 'https://www.doublem.dev',
     }),
     VueI18nPlugin({
       runtimeOnly: false,
