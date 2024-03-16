@@ -9,7 +9,9 @@ import path from 'path';
 export default defineConfig({
   plugins: [
     vue(),
-    Sitemap(),
+    Sitemap({
+      hostname: import.meta.env.VITE_HOSTNAME,
+    }),
     VueI18nPlugin({
       runtimeOnly: false,
       include: './src/i18n/langs/*',
