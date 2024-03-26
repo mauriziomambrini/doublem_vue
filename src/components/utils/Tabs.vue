@@ -1,5 +1,5 @@
 <script setup>
-import { ref, defineProps, watchEffect, computed } from 'vue';
+import { ref, defineProps, computed } from 'vue';
 import { TabsDirection, TabsTheme } from '@components/types.js';
 import Typo from '@components/typography/Typo.vue';
 
@@ -28,9 +28,6 @@ const props = defineProps({
 });
 
 const tabRefs = ref([]);
-const indicatorWidth = ref(0);
-const indicatorLeft = ref(0);
-const indicatorTop = ref(0);
 
 const handleClick = (index, onClick) => {
   if (typeof onClick === 'function') {
@@ -38,16 +35,22 @@ const handleClick = (index, onClick) => {
   }
 };
 
-watchEffect(() => {
+const activeTabEl = computed(() => {
   const activeTab = props.tabs.find((tab) => tab.active);
   const activeIndex = props.tabs.indexOf(activeTab);
-  const activeTabEl = tabRefs.value[activeIndex];
+  return tabRefs.value[activeIndex];
+});
 
-  if (activeTabEl) {
-    indicatorWidth.value = activeTabEl.clientWidth;
-    indicatorLeft.value = activeTabEl.offsetLeft;
-    indicatorTop.value = activeTabEl.offsetTop;
-  }
+const indicatorWidth = computed(() => {
+  return activeTabEl.value ? activeTabEl.value.clientWidth : 0;
+});
+
+const indicatorLeft = computed(() => {
+  return activeTabEl.value ? activeTabEl.value.offsetLeft : 0;
+});
+
+const indicatorTop = computed(() => {
+  return activeTabEl.value ? activeTabEl.value.offsetTop : 0;
 });
 
 const style = computed(() => ({

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, nextTick } from 'vue';
+import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import useScrollDirection from '@composable/useScrollDirection.js';
@@ -18,26 +18,16 @@ const mobileMenu = useMenu(MenuContext.MOBILE);
 const desktopMenu = useMenu(MenuContext.DESKTOP);
 const utilsMenu = useMenu(MenuContext.UTILS_DESKTOP);
 
-const currentRoute = ref(route.path);
+const currentRoute = computed(() => route.path);
 
-watch(
-  () => route.path,
-  (newPath) => {
-    nextTick(() => {
-      currentRoute.value = newPath;
-    });
-  },
-  { immediate: true },
-);
-
-const isActive = (itemHref) => {
-  const normalizedCurrentRoute = currentRoute.value.endsWith('/')
-    ? currentRoute.value
-    : `${currentRoute.value}/`;
+const isActive = computed(() => (itemHref) => {
+  const normalizedCurrentRoute = route.path.endsWith('/')
+    ? route.path
+    : `${route.path}/`;
   const normalizedItemHref = itemHref.endsWith('/') ? itemHref : `${itemHref}/`;
 
   return normalizedCurrentRoute === `/${locale.value}${normalizedItemHref}`;
-};
+});
 </script>
 
 <template>

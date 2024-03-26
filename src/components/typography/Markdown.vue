@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, defineProps } from 'vue';
+import { defineProps, computed } from 'vue';
 import MarkdownIt from 'markdown-it';
 import { TypoSize } from '@components/types.js';
 
@@ -16,7 +16,6 @@ const style = {
   '--lfs': `var(--fs-${props.baseSize})`,
 };
 
-const renderedMarkdown = ref('');
 const md = new MarkdownIt();
 
 md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
@@ -38,13 +37,7 @@ md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
   return self.renderToken(tokens, idx, options);
 };
 
-watch(
-  () => props.text,
-  (newValue) => {
-    renderedMarkdown.value = md.render(newValue);
-  },
-  { immediate: true },
-);
+const renderedMarkdown = computed(() => md.render(props.text || ''));
 </script>
 
 <template>

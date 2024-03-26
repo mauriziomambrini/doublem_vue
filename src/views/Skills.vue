@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, watch } from 'vue';
+import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import useGQL from '@composable/useGQL.js';
 import Skills from '@gql/skills.gql';
@@ -14,20 +14,19 @@ const { t, locale } = useI18n();
 const { data } = useGQL(Skills);
 const tabs = ['all', 'development', 'design'];
 const filter = ref('all');
-const tabsData = ref([]);
 
 const handleClick = (tab) => {
   filter.value = tab;
 };
 
-const updateTabsData = () => {
-  tabsData.value = tabs.map((tab) => ({
+const tabsData = computed(() => {
+  return tabs.map((tab) => ({
     key: tab,
     label: t(`input.label.${tab}`),
     active: filter.value === tab,
     onclick: () => handleClick(tab),
   }));
-};
+});
 
 const filteredSkills = computed(() => {
   switch (filter.value) {
@@ -53,11 +52,6 @@ const groupedSkills = computed(() => {
     return acc;
   }, {});
 });
-
-updateTabsData();
-
-watch(filter, updateTabsData);
-watch(locale, updateTabsData);
 </script>
 
 <template>
@@ -65,13 +59,10 @@ watch(locale, updateTabsData);
     :title="data?.skill?.seo?.title"
     :description="data?.skill?.seo?.description"
   />
-  <Hero
-    v-if="data && data.skill && data.skill.title"
-    :title="data?.skill.title"
-  />
-  <Markdown v-if="data?.skill && data.skill.text" :text="data?.skill.text" />
+  <Hero v-if="data?.skill?.title" :title="data?.skill.title" />
+  <Markdown v-if="data?.skill?.text" :text="data?.skill.text" />
 
-  <div v-if="data && data.skill" :class="s.wrapper">
+  <div v-if="data?.skill" :class="s.wrapper">
     <Tabs
       :classes="{ wrapper: s.wrapperTab }"
       :tabs="tabsData"
