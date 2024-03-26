@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref, computed } from 'vue';
+import { defineProps, toRef, computed } from 'vue';
 import WrapBalancer from 'vue-wrap-balancer';
 import {
   TypoFamily,
@@ -21,7 +21,7 @@ const props = defineProps({
   class: { type: [String, Array] },
 });
 
-const lc = ref(props.color);
+const lc = toRef(props, 'color');
 
 const style = computed(() => ({
   '--lc': lc.value,
