@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps } from 'vue';
+import { computed, defineProps } from 'vue';
 import { LabelBadgeTheme } from '@components/types.js';
 import Typo from '@components/typography/Typo.vue';
 
@@ -9,8 +9,10 @@ const props = defineProps({
   class: { type: [String, Array] },
 });
 
-const label =
-  props.theme === 'tag' ? ['#', props.label].join(' ') : props.label;
+const label = computed(() => {
+  return props.theme === 'tag' ? `# ${props.label}` : props.label;
+});
+
 </script>
 
 <template>
